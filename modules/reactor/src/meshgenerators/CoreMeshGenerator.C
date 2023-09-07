@@ -293,17 +293,19 @@ CoreMeshGenerator::CoreMeshGenerator(const InputParameters & parameters)
           auto params = _app.getFactory().getValidParams(adaptive_mg_name);
 
           const auto assembly_pitch = getReactorParam<Real>(RGMB::assembly_pitch);
+          const auto has_num_sectors = hasMeshProperty<std::vector<unsigned int>>("num_sectors_per_side_meta", first_nondummy_assembly);
+          const auto num_sectors = has_num_sectors ? getMeshProperty<std::vector<unsigned int>>("num_sectors_per_side_meta",first_nondummy_assembly).front() : 2;
           if (_geom_type == "Hex")
           {
             params.set<Real>("hexagon_size") = assembly_pitch / 2.0;
             params.set<std::vector<unsigned int>>("num_sectors_per_side") =
-                std::vector<unsigned int>(6, 2);
+                std::vector<unsigned int>(6, num_sectors);
           }
           else
           {
             params.set<Real>("square_size") = assembly_pitch;
             params.set<std::vector<unsigned int>>("num_sectors_per_side") =
-                std::vector<unsigned int>(4, 2);
+                std::vector<unsigned int>(4, num_sectors);
           }
           params.set<std::vector<unsigned int>>("sides_to_adapt") = std::vector<unsigned int>{0};
           params.set<std::vector<MeshGeneratorName>>("meshes_to_adapt_to") =

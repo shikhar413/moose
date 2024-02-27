@@ -144,10 +144,9 @@ MeshGeneratorSystem::createAddedMeshGenerators()
       resolver.addEdge(param_dependency_pair.second, name);
   }
 
-  std::vector<std::vector<std::string>> ordered_generators;
   try
   {
-    ordered_generators = resolver.getSortedValuesSets();
+    _ordered_generators = resolver.getSortedValuesSets();
   }
   catch (CyclicDependencyException<std::string> & e)
   {
@@ -156,7 +155,7 @@ MeshGeneratorSystem::createAddedMeshGenerators()
   }
 
   // Construct all of the mesh generators that we know exist
-  for (const auto & generator_names : ordered_generators)
+  for (const auto & generator_names : _ordered_generators)
     for (const auto & generator_name : generator_names)
       if (_mesh_generator_params.count(generator_name))
         createMeshGenerator(generator_name);
@@ -644,4 +643,39 @@ bool
 MeshGeneratorSystem::hasDataDrivenAllowed() const
 {
   return _app.parameters().get<bool>(allow_data_driven_param);
+}
+
+bool
+MeshGeneratorSystem::checkUpstreamGenerator(const std::string current_generator,
+                                            const std::string generator_to_compare) const
+{
+  bool is_upstream = false;
+  bool found_generator_to_compare = false;
+  bool found_current_generator = false;
+  for (const auto & generator_names : _ordered_generators)
+  {
+    // First check if current_generator is defined at current dependency level
+    if (std::find(generator_names.begin(), generator_names.end(), current_generator) !=
+        generator_names.end())
+    {
+      found_current_generator = true;
+      // generator_to_compare is defined as upstream only if it has been found at a dependency level
+      // that occurs strictly before the one containing current_generator
+      if (found_generator_to_compare)
+        is_upstream = true;
+    }
+
+    // Next check if generator_to_compare is found at current dependency level
+    if (std::find(generator_names.begin(), generator_names.end(), generator_to_compare) !=
+        generator_names.end())
+      found_generator_to_compare = true;
+  }
+
+  mooseAssert(found_generator_to_compare,
+              "Checking for upstream generator that is not in input file");
+
+  // generator_to_compare is defined as upstream if it occurs at a dependency level before
+  // current_generator or if current_generator was not found in dependency list, i.e. it is sub
+  // generator
+  return is_upstream || !found_current_generator;
 }

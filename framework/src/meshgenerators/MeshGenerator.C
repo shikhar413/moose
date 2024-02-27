@@ -408,3 +408,13 @@ MeshGenerator::generateData()
   mooseAssert(!hasGenerateData(), "Inconsistent flag");
   mooseError("This MeshGenerator does not have a generateData() implementation.");
 }
+
+bool
+MeshGenerator::isUpstreamGenerator(const std::string generator_to_compare) const
+{
+  mooseAssert(!generator_to_compare.empty(), "Empty generator name");
+  const auto & mg_sys = _app.getMeshGeneratorSystem();
+  if (!_app.constructingMeshGenerators())
+    mooseError("Cannot check whether mesh is upstream outside of construction");
+  return mg_sys.checkUpstreamGenerator(name(), generator_to_compare);
+}

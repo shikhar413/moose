@@ -376,6 +376,19 @@ protected:
    */
   void declareNullMeshName(const MeshGeneratorName & name);
 
+  /**
+   * Checks whether input parameter is defined upstream of current mesh generator
+   * based on dependency tree of generators found in the mesh input.
+   *
+   * A return value of true means that:
+   * 1. the input generator occurs at an earlier dependency level than the current generator or
+   * 2. the current generator is a mesh sub generator
+   * A return value of false means that:
+   * 1. the input generator has the same dependency level as the current generator or
+   * 2. the input generator is defined at a later dependency level than the current generator
+   */
+  bool isUpstreamGenerator(const std::string generator_to_compare) const;
+
   /// Pointer to the owning mesh
   MooseMesh * const _mesh;
 

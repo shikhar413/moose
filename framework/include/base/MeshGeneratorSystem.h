@@ -140,6 +140,22 @@ public:
   bool hasMeshGeneratorParams(const MeshGeneratorName & name) const;
 
   /**
+   * Check whether one generator is defined as upstream of another based on mesh dependency tree of
+   * input file generators
+   *
+   * This function returns true if the second argument is defined on a dependency list that is
+   * higher than the first argument, or if the first argument does not exist in the dependecny list,
+   * i.e. it is a sub generator. Function will return false if the first argument exists downstream
+   * of the second argument OR if they are at the same dependency level
+   *
+   * @param current_generator base generator
+   * @param generator_to_compare generator that is used to check if upstream of current_generator
+   * @return True if generator_to_compare occurs upstream of current_generator
+   */
+  bool checkUpstreamGenerator(const std::string current_generator,
+                              const std::string generator_to_compare) const;
+
+  /**
    * Whether or not mesh generators are currently being appended (append_mesh_generator task)
    */
   bool appendingMeshGenerators() const;
@@ -221,4 +237,7 @@ private:
 
   /// Whether any of the mesh generators are a \p BreakMeshByBlockGenerator
   bool _has_bmbb;
+
+  /// Holds the ordering of generators based on mesh dependencies
+  std::vector<std::vector<std::string>> _ordered_generators;
 };

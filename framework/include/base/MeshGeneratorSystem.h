@@ -144,7 +144,7 @@ public:
    * input file generators
    *
    * This function returns true if the second argument is defined on a dependency list that is
-   * higher than the first argument, or if the first argument does not exist in the dependecny list,
+   * higher than the first argument, or if the first argument does not exist in the dependency list,
    * i.e. it is a sub generator. Function will return false if the first argument exists downstream
    * of the second argument OR if they are at the same dependency level
    *

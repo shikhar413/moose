@@ -675,7 +675,7 @@ MeshGeneratorSystem::checkUpstreamGenerator(const std::string current_generator,
               "Checking for upstream generator that is not in input file");
 
   // generator_to_compare is defined as upstream if it occurs at a dependency level before
-  // current_generator or if current_generator was not found in dependency list, i.e. it is sub
+  // current_generator or if current_generator was not found in dependency list, i.e. it is a sub
   // generator
   return is_upstream || !found_current_generator;
 }

@@ -91,6 +91,13 @@ public:
    * Internal generation method - this is what is actually called
    * within MooseApp to execute the MeshGenerator.
    */
+  // TODO return type of this method should be updated to CSGBase type
+  void generateInternalCSG();
+
+  /**
+   * Internal generation method - this is what is actually called
+   * within MooseApp to execute the MeshGenerator.
+   */
   [[nodiscard]] std::unique_ptr<MeshBase> generateInternal();
 
   /**

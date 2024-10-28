@@ -11,9 +11,12 @@
 
 #include "Action.h"
 
+<<<<<<< HEAD
 /**
  * Outputs the Constructive Solid Geometry to file then exits
  */
+=======
+>>>>>>> 1cdf47d43b (Preliminary design of csg_only action)
 class CSGOnlyAction : public Action
 {
 public:
@@ -22,7 +25,10 @@ public:
   CSGOnlyAction(const InputParameters & params);
 
   virtual void act() override;
+<<<<<<< HEAD
 
 protected:
   std::unique_ptr<CSG::CSGBase> _csg_mesh;
+=======
+>>>>>>> 1cdf47d43b (Preliminary design of csg_only action)
 };

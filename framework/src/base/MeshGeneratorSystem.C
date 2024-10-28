@@ -203,6 +203,7 @@ MeshGeneratorSystem::createAddedMeshGenerators()
     mooseWarning("--csg-only option does not currently support multi-threading");
 
   // Construct all of the mesh generators that we know exist
+  const bool csg_only = getCSGOnly();
   for (const auto & generator_names : ordered_generators)
     for (const auto & generator_name : generator_names)
       if (auto it = _mesh_generator_params.find(generator_name); it != _mesh_generator_params.end())

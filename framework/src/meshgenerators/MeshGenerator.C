@@ -370,6 +370,13 @@ MeshGenerator::generateInternalCSG()
 }
 
 void
+MeshGenerator::generateInternalCSG()
+{
+  mooseAssert(isDataOnly(), "Trying to use csg-only mode while not in data-driven mode");
+  generateCSG();
+}
+
+void
 MeshGenerator::addMeshSubgenerator(const std::string & type,
                                    const std::string & name,
                                    InputParameters params)

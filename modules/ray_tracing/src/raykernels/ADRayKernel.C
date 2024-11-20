@@ -51,9 +51,8 @@ ADRayKernelTempl<T>::ADRayKernelTempl(const InputParameters & params)
   // with a plane/surface source or a volumetric source, respectively.
   // This is also why we do not multiply by _coord[_qp] in any of the
   // integrations that follow.
-  for (const auto & subdomain_id : _mesh.meshSubdomains())
-    if (_fe_problem.getCoordSystem(subdomain_id) != Moose::COORD_XYZ)
-      mooseError("Not valid on coordinate systems other than XYZ");
+  if (MooseMeshUtils::getMeshCoordSystem(_fe_problem, _mesh.meshSubdomains()) != Moose::COORD_XYZ)
+    mooseError("Not valid on coordinate systems other than XYZ");
 
   _subproblem.haveADObjects(true);
 

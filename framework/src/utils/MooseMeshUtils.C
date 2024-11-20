@@ -571,4 +571,20 @@ extraElemIntegerSwapParametersProcessor(
                                     elem_integer_swap_pairs.end());
   }
 }
+
+Moose::CoordinateSystemType
+getMeshCoordSystem(const FEProblemBase & fe_problem, const std::set<SubdomainID> subdomain_ids)
+{
+  const auto & check_subdomains =
+        subdomain_ids.empty() ? fe_problem.mesh().meshSubdomains() : subdomain_ids;
+  if (check_subdomains.empty())
+    mooseError("No subdomains were found in problem");
+  const auto coord_system = fe_problem.getCoordSystem(*check_subdomains.begin());
+
+  // Make sure all subdomains are using the same coordinate system
+  for (const auto & subdomain : check_subdomains)
+    if (fe_problem.getCoordSystem(subdomain) != coord_system)
+      mooseError("A mixture of coordinate system types was found in input mesh.");
+  return coord_system;
+}
 }

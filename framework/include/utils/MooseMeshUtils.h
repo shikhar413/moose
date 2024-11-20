@@ -402,4 +402,12 @@ void extraElemIntegerSwapParametersProcessor(
     const unsigned int num_integers,
     const std::vector<std::vector<std::vector<dof_id_type>>> & elem_integers_swaps,
     std::vector<std::unordered_map<dof_id_type, dof_id_type>> & elem_integers_swap_pairs);
+
+/**
+ * Return the coordinate system of the input. An error is thrown if multiple coordate system types exist on the mesh
+ * @param mesh Input mesh
+ * @param subdomain_ids Optional set of subdomain ids for determining coordinate system if block restriction is involved
+ * @return Coordinate system of input mesh
+ */
+Moose::CoordinateSystemType getMeshCoordSystem(FEProblemBase & fe_problem, const std::set<SubdomainID> subdomain_ids = std::set<SubdomainID>({}));
 }

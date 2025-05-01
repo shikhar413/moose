@@ -26,7 +26,8 @@ TestCSGInputNotMovedMeshGenerator::validParams()
 }
 
 TestCSGInputNotMovedMeshGenerator::TestCSGInputNotMovedMeshGenerator(const InputParameters & params)
-  : MeshGenerator(params), _mesh_ptr(getMesh("input"))
+  : MeshGenerator(params),
+    _mesh_ptr(getMesh("input"))
 {
 }
 

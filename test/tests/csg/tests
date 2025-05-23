@@ -21,6 +21,15 @@
     mesh_mode = REPLICATED
     detail = 'passing a single CSGBase object between MeshGenerators to be updated'
   []
+  [csg_only_final_generator]
+    type = 'JSONDiff'
+    input = 'csg_only_chained.i'
+    cli_args = 'Mesh/final_generator=csg_inf_square --csg-only csg_only_inf_planes_out_csg.json'
+    jsondiff = 'csg_only_inf_planes_out_csg.json'
+    recover = false
+    mesh_mode = REPLICATED
+    detail = 'specifying a final generator to create a CSGBase object for an intermediate generator'
+  []
   [all_region_types]
     type = 'JSONDiff'
     input = 'csg_only_region_types.i'

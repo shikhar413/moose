@@ -26,8 +26,7 @@ TestCSGRegionTypesMeshGenerator::validParams()
 }
 
 TestCSGRegionTypesMeshGenerator::TestCSGRegionTypesMeshGenerator(const InputParameters & params)
-  : MeshGenerator(params),
-    _side_length(getParam<Real>("side_length"))
+  : MeshGenerator(params), _side_length(getParam<Real>("side_length"))
 {
 }
 
@@ -42,22 +41,22 @@ std::unique_ptr<CSG::CSGBase>
 TestCSGRegionTypesMeshGenerator::generateCSG()
 {
   auto csg_mesh = std::make_unique<CSG::CSGBase>();
-
-  std::string root_univ_name = "root_universe";
-  auto root_univ = csg_mesh->createRootUniverse(root_univ_name);
+  auto root_univ = csg_mesh->getRootUniverse();
 
   // initialize all surfaces to be represented
-  std::vector<std::vector<Real>> plane_coeffs {
-     {0, 1, 0, _side_length}, { 0, -1, 0, _side_length},
-     {1, 0, 0, _side_length}, {-1,  0, 0, _side_length},
-     {1, 0, 0, 0}};
-  std::vector<std::string> surf_names {"plus_x", "minus_x", "plus_y", "minus_y", "zero_y"};
+  std::vector<std::vector<Real>> plane_coeffs{{0, 1, 0, _side_length},
+                                              {0, -1, 0, _side_length},
+                                              {1, 0, 0, _side_length},
+                                              {-1, 0, 0, _side_length},
+                                              {1, 0, 0, 0}};
+  std::vector<std::string> surf_names{"plus_x", "minus_x", "plus_y", "minus_y", "zero_y"};
   CSG::CSGRegion region_left, region_right;
   for (unsigned int i = 0; i < plane_coeffs.size(); ++i)
   {
     const auto surf_name = "surf_" + surf_names[i];
     const auto plane_coeff = plane_coeffs[i];
-    auto plane_ptr = csg_mesh->createPlaneFromCoefficients(surf_name, plane_coeff[0], plane_coeff[1], plane_coeff[2], plane_coeff[3]);
+    auto plane_ptr = csg_mesh->createPlaneFromCoefficients(
+        surf_name, plane_coeff[0], plane_coeff[1], plane_coeff[2], plane_coeff[3]);
     auto pos_halfspace = +plane_ptr;
     auto neg_halfspace = -plane_ptr;
     if (surf_names[i] == "plus_x")
@@ -78,10 +77,10 @@ TestCSGRegionTypesMeshGenerator::generateCSG()
 
   CSG::CSGRegion region = region_left | region_right;
   const auto material_name = "square_material";
-  root_univ->addMaterialCell("square_cell", material_name, region);
+  csg_mesh->createCell("square_cell", material_name, region);
 
   CSG::CSGRegion region_complement = ~region;
-  root_univ->addVoidCell("void_cell", region_complement);
+  csg_mesh->createCell("void_cell", region_complement);
 
   return csg_mesh;
 }

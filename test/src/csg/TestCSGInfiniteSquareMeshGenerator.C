@@ -25,9 +25,9 @@ TestCSGInfiniteSquareMeshGenerator::validParams()
   return params;
 }
 
-TestCSGInfiniteSquareMeshGenerator::TestCSGInfiniteSquareMeshGenerator(const InputParameters & params)
-  : MeshGenerator(params),
-    _side_length(getParam<Real>("side_length"))
+TestCSGInfiniteSquareMeshGenerator::TestCSGInfiniteSquareMeshGenerator(
+    const InputParameters & params)
+  : MeshGenerator(params), _side_length(getParam<Real>("side_length"))
 {
 }
 
@@ -42,26 +42,30 @@ std::unique_ptr<CSG::CSGBase>
 TestCSGInfiniteSquareMeshGenerator::generateCSG()
 {
   auto csg_mesh = std::make_unique<CSG::CSGBase>();
-
-  std::string root_univ_name = "root_universe";
-  auto root_univ = csg_mesh->createRootUniverse(root_univ_name);
   const auto centroid = Point(0, 0, 0);
 
   // Add surfaces and halfspaces corresponding to 4 planes of infinite square
-  std::vector<std::vector<Point>> points_on_planes {
-    {Point( 1. * _side_length / 2., 0., 0.), Point( 1. * _side_length / 2., 1., 0.), Point( 1. * _side_length / 2., 0., 1.)},
-    {Point(-1. * _side_length / 2., 0., 0.), Point(-1. * _side_length / 2., 1., 0.), Point(-1. * _side_length / 2., 0., 1.)},
-    {Point(0.,  1. * _side_length / 2., 0.), Point(1.,  1. * _side_length / 2., 0.), Point(0.,  1. * _side_length / 2., 1.)},
-    {Point(0., -1. * _side_length / 2., 0.), Point(1., -1. * _side_length / 2., 0.), Point(0., -1. * _side_length / 2., 1.)}
-  };
-  std::vector<std::string> surf_names {"plus_x", "minus_x", "plus_y", "minus_y"};
+  std::vector<std::vector<Point>> points_on_planes{{Point(1. * _side_length / 2., 0., 0.),
+                                                    Point(1. * _side_length / 2., 1., 0.),
+                                                    Point(1. * _side_length / 2., 0., 1.)},
+                                                   {Point(-1. * _side_length / 2., 0., 0.),
+                                                    Point(-1. * _side_length / 2., 1., 0.),
+                                                    Point(-1. * _side_length / 2., 0., 1.)},
+                                                   {Point(0., 1. * _side_length / 2., 0.),
+                                                    Point(1., 1. * _side_length / 2., 0.),
+                                                    Point(0., 1. * _side_length / 2., 1.)},
+                                                   {Point(0., -1. * _side_length / 2., 0.),
+                                                    Point(1., -1. * _side_length / 2., 0.),
+                                                    Point(0., -1. * _side_length / 2., 1.)}};
+  std::vector<std::string> surf_names{"plus_x", "minus_x", "plus_y", "minus_y"};
 
   // initialize cell region to be updated
   CSG::CSGRegion region;
   for (unsigned int i = 0; i < points_on_planes.size(); ++i)
   {
     const auto surf_name = "surf_" + surf_names[i];
-    auto plane_ptr = csg_mesh->createPlaneFromPoints(surf_name, points_on_planes[i][0], points_on_planes[i][1], points_on_planes[i][2]);
+    auto plane_ptr = csg_mesh->createPlaneFromPoints(
+        surf_name, points_on_planes[i][0], points_on_planes[i][1], points_on_planes[i][2]);
     const auto region_direction = plane_ptr->directionFromPoint(centroid);
     auto halfspace =
         ((region_direction == CSG::CSGSurface::Direction::positive) ? +plane_ptr : -plane_ptr);
@@ -75,7 +79,7 @@ TestCSGInfiniteSquareMeshGenerator::generateCSG()
   const auto cell_name = "square_cell";
   const auto material_name = "square_material";
 
-  root_univ->addMaterialCell(cell_name, material_name, region);
+  csg_mesh->createCell(cell_name, material_name, region);
 
   return csg_mesh;
 }

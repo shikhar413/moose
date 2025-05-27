@@ -1,5 +1,15 @@
 {
   "CELLS": {
+    "OriginSphere_sphere_cell": {
+      "FILL": "",
+      "FILLTYPE": "VOID",
+      "REGION": "-OriginSphere_sphere_surf"
+    },
+    "PointSphere_sphere_cell": {
+      "FILL": "new_mat",
+      "FILLTYPE": "MATERIAL",
+      "REGION": "-PointSphere_sphere_surf"
+    },
     "square_cell": {
       "FILL": "square_material",
       "FILLTYPE": "MATERIAL",
@@ -7,6 +17,26 @@
     }
   },
   "SURFACES": {
+    "OriginSphere_sphere_surf": {
+      "BOUNDARY": "transmission",
+      "COEFFICIENTS": {
+        "r": 3.0,
+        "x0": 0.0,
+        "y0": 0.0,
+        "z0": 0.0
+      },
+      "TYPE": "sphere"
+    },
+    "PointSphere_sphere_surf": {
+      "BOUNDARY": "transmission",
+      "COEFFICIENTS": {
+        "r": 5.0,
+        "x0": -3.0,
+        "y0": -2.0,
+        "z0": -1.0
+      },
+      "TYPE": "sphere"
+    },
     "surf_minus_x": {
       "BOUNDARY": "transmission",
       "COEFFICIENTS": {
@@ -69,8 +99,10 @@
     }
   },
   "UNIVERSES": {
-    "ROOT_UNIVERSE": {
+    "ComboUniverse_root": {
       "CELLS": [
+        "PointSphere_sphere_cell",
+        "OriginSphere_sphere_cell",
         "square_cell"
       ],
       "ROOT": true

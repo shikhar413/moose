@@ -14,7 +14,8 @@ namespace CSG
 
 CSGSurfaceList::CSGSurfaceList() {}
 
-void CSGSurfaceList::checkSurfaceName(const std::string name)
+void
+CSGSurfaceList::checkSurfaceName(const std::string name)
 {
   if (_surfaces.find(name) != _surfaces.end())
     mooseError("Surface with name " + name + " already exists in geoemetry.");
@@ -42,11 +43,8 @@ CSGSurfaceList::addPlaneFromPoints(const std::string name,
 }
 
 std::shared_ptr<CSGSurface>
-CSGSurfaceList::addPlaneFromCoefficients(const std::string name,
-                                         const Real a,
-                                         const Real b,
-                                         const Real c,
-                                         const Real d)
+CSGSurfaceList::addPlaneFromCoefficients(
+    const std::string name, const Real a, const Real b, const Real c, const Real d)
 {
   checkSurfaceName(name);
   _surfaces.insert(std::make_pair(name, std::make_shared<CSGPlane>(name, a, b, c, d)));
@@ -54,9 +52,7 @@ CSGSurfaceList::addPlaneFromCoefficients(const std::string name,
 }
 
 std::shared_ptr<CSGSurface>
-CSGSurfaceList::addSphere(const std::string name,
-                          const Point center,
-                          const Real r)
+CSGSurfaceList::addSphere(const std::string name, const Point center, const Real r)
 {
   checkSurfaceName(name);
   _surfaces.insert(std::make_pair(name, std::make_shared<CSGSphere>(name, center, r)));
@@ -64,11 +60,8 @@ CSGSurfaceList::addSphere(const std::string name,
 }
 
 std::shared_ptr<CSGSurface>
-CSGSurfaceList::addCylinder(const std::string name,
-                            const Real x0,
-                            const Real x1,
-                            const Real r,
-                            const std::string axis)
+CSGSurfaceList::addCylinder(
+    const std::string name, const Real x0, const Real x1, const Real r, const std::string axis)
 {
   checkSurfaceName(name);
   std::shared_ptr<CSGSurface> surf;
@@ -84,6 +77,31 @@ CSGSurfaceList::addCylinder(const std::string name,
 
   _surfaces.insert(std::make_pair(name, surf));
   return _surfaces[name];
+}
+
+void
+CSGSurfaceList::addSurface(const std::shared_ptr<CSGSurface> surf)
+{
+  auto name = surf->getName();
+  checkSurfaceName(name);
+  _surfaces.insert(std::make_pair(name, surf));
+}
+
+void
+CSGSurfaceList::renameSurface(const std::shared_ptr<CSGSurface> surface, const std::string name)
+{
+  // check that this surface passed in is actually in the same surface that is in the surface
+  // list
+  auto prev_name = surface->getName();
+  auto existing_surface = _surfaces.find(prev_name)->second;
+  if (existing_surface != surface)
+    mooseError("Surface " + prev_name + " cannot be renamed to " + name +
+               " as it does not exist in this CSGBase instance.");
+
+  checkSurfaceName(name);
+  surface->setName(name);
+  _surfaces.erase(prev_name);
+  _surfaces.insert(std::make_pair(name, surface));
 }
 
 } // namespace CSG

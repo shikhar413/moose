@@ -8,6 +8,7 @@
 //* https://www.gnu.org/licenses/lgpl-2.1.html
 
 #include "TestCSGCylindersMeshGenerator.h"
+#include "CSGBase.h"
 
 registerMooseObject("MooseTestApp", TestCSGCylindersMeshGenerator);
 
@@ -16,9 +17,9 @@ TestCSGCylindersMeshGenerator::validParams()
 {
   InputParameters params = MeshGenerator::validParams();
 
-  params.addRequiredParam<Real>("radius", "radius of cylinder.");
-  params.addRequiredParam<Real>("x0", "first coordinate of center.");
-  params.addRequiredParam<Real>("x1", "second coordinate of center.");
+  params.addRequiredParam<std::vector<Real>>("radii", "list of radii for concentric cylinders");
+  params.addRequiredParam<Real>("height", "cylinder height");
+  params.addRequiredParam<std::vector<Real>>("center", "center point of cylinder");
   params.addRequiredParam<std::string>("axis", "axis alignment");
   // Declare that this generator has a generateData method
   MeshGenerator::setHasGenerateData(params);
@@ -29,9 +30,10 @@ TestCSGCylindersMeshGenerator::validParams()
 
 TestCSGCylindersMeshGenerator::TestCSGCylindersMeshGenerator(const InputParameters & params)
   : MeshGenerator(params),
-    _radius(getParam<Real>("radius")),
-    _x0(getParam<Real>("x0")),
-    _x1(getParam<Real>("x1")),
+    _radii(getParam<std::vector<Real>>("radii")),
+    _h(getParam<Real>("height")),
+    _x0(getParam<std::vector<Real>>("center")[0]),
+    _x1(getParam<std::vector<Real>>("center")[1]),
     _axis(getParam<std::string>("axis"))
 {
 }
@@ -47,12 +49,39 @@ std::unique_ptr<CSG::CSGBase>
 TestCSGCylindersMeshGenerator::generateCSG()
 {
   auto csg_mesh = std::make_unique<CSG::CSGBase>();
+  auto mg_name = this->name();
 
-  std::string root_univ_name = "root_cylinder";
-  auto root_univ = csg_mesh->createRootUniverse(root_univ_name);
+  // create the top and bottom planes
+  Real a = 0;
+  Real b = 0;
+  Real c = 0;
+  if (_axis == "x")
+    a = 1;
+  else if (_axis == "y")
+    b = 1;
+  else if (_axis == "z")
+    c = 1;
+  auto pos_plane = csg_mesh->createPlaneFromCoefficients(mg_name + "_pos_plane", a, b, c, _h / 2);
+  auto neg_plane =
+      csg_mesh->createPlaneFromCoefficients(mg_name + "_neg_plane", a, b, c, -1 * _h / 2);
 
-  csg_mesh->createCylinder("cylinder_surf_" + _axis, _x0, _x1, _radius, _axis);
-  // TODO: make cells: auto elem_cell_ptr = root_univ->addMaterialCell(cell_name, material_name);
+  std::string prev_surf_name;
+  for (unsigned int i = 0; i < _radii.size(); ++i)
+  {
+    std::string surf_name = mg_name + "_surf_cyl_" + _axis + "_" + std::to_string(i);
+    auto cyl_surf = csg_mesh->createCylinder(surf_name, _x0, _x1, _radii[i], _axis);
+    CSG::CSGRegion region;
+    std::string cell_name = mg_name + "_cell_cyl_" + _axis + "_" + std::to_string(i);
+    if (i == 0)
+      region = -cyl_surf & -pos_plane & +neg_plane;
+    else
+    {
+      auto prev_surf = csg_mesh->getSurfaceByName(prev_surf_name);
+      region = +prev_surf & -cyl_surf & -pos_plane & +neg_plane;
+    }
+    auto cell = csg_mesh->createCell(cell_name, region);
+    prev_surf_name = surf_name;
+  }
 
   return csg_mesh;
 }

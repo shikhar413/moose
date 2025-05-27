@@ -9,8 +9,7 @@
 
 #pragma once
 
-#include "CSGCell.h"
-#include "CSGVoidCell.h"
+#include "CSGCellList.h"
 
 namespace CSG
 {
@@ -24,38 +23,100 @@ class CSGUniverse
 {
 public:
   /**
-   * Default constructor
+   * @brief Construct a new CSGUniverse object
+   *
+   * @param name unique name of universe
+   * @param is_root true to set universe as the root universe (default false)
    */
-  CSGUniverse(const std::string name);
+  CSGUniverse(const std::string name, bool is_root=false);
+
+  /**
+   * @brief Construct a new CSGUniverse object from list of cells
+   *
+   * @param name unique name of universe
+   * @param cells list of cells to add to universe
+   * @param is_root true to set universe as the root universe (default false)
+   */
+  CSGUniverse(const std::string name,
+              std::vector<std::shared_ptr<CSGCell>> cells,
+              bool is_root = false);
 
   /**
    * Destructor
    */
   virtual ~CSGUniverse() = default;
 
-  std::shared_ptr<CSGCell> addMaterialCell(const std::string name, const std::string fill_name, const CSGRegion & region);
+  /**
+   * @brief add cell to universe
+   *
+   * @param cell pointer to cell to add
+   */
+  void addCell(const std::shared_ptr<CSGCell> cell);
 
-  std::shared_ptr<CSGCell> addVoidCell(const std::string name, const CSGRegion & region);
-
+  /**
+   * @brief Get the Cell object by name
+   *
+   * @param name name of cell
+   * @return std::shared_ptr<CSGCell> pointer to the cell of the specified name in this universe
+   */
   std::shared_ptr<CSGCell> getCell(const std::string name);
 
+  /**
+   * @brief check if cell of provided name is present in universe
+   *
+   * @param name name of cell
+   * @return true if cell of name is in universe, otherwise false
+   */
   bool hasCell(const std::string name) const;
 
-  const std::map<unsigned int, std::shared_ptr<CSGCell>> getAllCells() const { return _cells; }
+  /**
+   * @brief remove a cell of the specified name from the universe
+   *
+   * @param name name of cell to remove
+   */
+  void removeCell(const std::string name);
 
+  /**
+   * @brief remove all cells from the universe
+   */
+  void removeAllCells() { _cells.clear(); }
+
+  /**
+   * @brief Get list of the all cells in the universe
+   *
+   * @return std::vector<std::shared_ptr<CSGCell>> list of pointers to cells in universe
+   */
+  std::vector<std::shared_ptr<CSGCell>> getAllCells() const { return _cells; }
+
+  /**
+   * @brief Get the name of the universe
+   *
+   * @return const std::string name of universe
+   */
   const std::string getName() const { return _name; }
 
+  /**
+   * @brief return true if the universe is the root universe
+   *
+   * @return true / false
+   */
+  bool isRoot() { return _is_root; }
+
 protected:
-  /// Name of surface
+  /// Name of universe
   std::string _name;
 
-  /// Mapping of cell ids to pointers of cell objects that belong to universe
-  std::map<unsigned int, std::shared_ptr<CSGCell>> _cells;
+  /// list of cells in universe
+  std::vector<std::shared_ptr<CSGCell>> _cells;
 
-  /// Mapping of cell name to cell id
-  std::map<std::string, unsigned int> _cell_name_id_mapping;
+  // whether or not this universe is the root universe
+  bool _is_root;
 
-  /// Next available cell id
-  unsigned int _next_cell_id;
+  // set the name of the universe - intentionally not public because
+  // name needs to be managed at the CSGUniverseList level
+  void setName(const std::string name) { _name = name; }
+
+  // CSGUniverseList needs to be friend to access setName()
+  friend class CSGUniverseList;
 };
 } // namespace CSG

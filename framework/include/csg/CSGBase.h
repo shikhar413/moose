@@ -131,12 +131,12 @@ public:
    * @brief Get a Surface object by name
    *
    * @param name surface name
+   * @param input_mg_name Name of MeshGenerator that created surface. If left blank, the current
+   * MeshGenerator is assumed to have created the surface
    * @return shared pointer to CSGSurface object
    */
-  const std::shared_ptr<CSGSurface> & getSurfaceByName(const std::string name)
-  {
-    return _surface_list.getSurface(name);
-  }
+  const std::shared_ptr<CSGSurface> & getSurfaceByName(const std::string name,
+                                                       const MeshGeneratorName input_mg_name = "");
 
   /**
    * @brief rename the specified surface
@@ -146,7 +146,7 @@ public:
    */
   void renameSurface(const std::shared_ptr<CSGSurface> surface, const std::string name)
   {
-    _surface_list.renameSurface(surface, name);
+    _surface_list.renameSurface(surface, _mg_name + "_" + name);
   }
 
   /**
@@ -207,6 +207,8 @@ public:
    * @brief Get a Cell object by name
    *
    * @param name cell name
+   * @param input_mg_name Name of MeshGenerator that created surface. If left blank, the current
+   * MeshGenerator is assumed to have created the cell
    * @return shared pointer to CSGCell object
    */
   const std::shared_ptr<CSGCell> & getCellByName(const std::string name,
@@ -220,7 +222,7 @@ public:
    */
   void renameCell(const std::shared_ptr<CSGCell> cell, const std::string name)
   {
-    _cell_list.renameCell(cell, name);
+    _cell_list.renameCell(cell, _mg_name + "_" + name);
   }
 
   /**
@@ -254,10 +256,7 @@ public:
    * @param universe pointer to CSGUniverse to rename
    * @param name new name
    */
-  void renameUniverse(const std::shared_ptr<CSGUniverse> universe, const std::string name)
-  {
-    _universe_list.renameUniverse(universe, name);
-  }
+  void renameUniverse(const std::shared_ptr<CSGUniverse> universe, const std::string name);
 
   /**
    * @brief Create an empty Universe object
@@ -297,12 +296,12 @@ public:
    * @brief Get a universe object by name
    *
    * @param name universe name
+   * @param input_mg_name Name of MeshGenerator that created surface. If left blank, the current
+   * MeshGenerator is assumed to have created the universe
    * @return shared pointer to CSGUniverse object
    */
-  const std::shared_ptr<CSGUniverse> & getUniverseByName(const std::string name)
-  {
-    return _universe_list.getUniverse(name);
-  }
+  const std::shared_ptr<CSGUniverse> &
+  getUniverseByName(const std::string name, const MeshGeneratorName input_mg_name = "");
 
   /**
    * @brief Join another CSGBase object to this one. The cells of the root universe
@@ -311,12 +310,7 @@ public:
    *
    * @param base pointer to a different CSGBase object
    */
-  void joinOtherBase(std::unique_ptr<CSGBase> & base)
-  {
-    joinSurfaceList(base->getSurfaceList());
-    joinCellList(base->getCellList());
-    joinUniverseList(base->getUniverseList());
-  }
+  void joinOtherBase(std::unique_ptr<CSGBase> & base);
 
   /**
    * @brief Join another CSGBase object to this one. For the incoming CSGBase object,
@@ -328,12 +322,7 @@ public:
    * @param base pointer to a different CSGBase object
    * @param new_root_name_join new name for the universe generated from the incoming root universe
    */
-  void joinOtherBase(std::unique_ptr<CSGBase> & base, std::string new_root_name_join)
-  {
-    joinSurfaceList(base->getSurfaceList());
-    joinCellList(base->getCellList());
-    joinUniverseList(base->getUniverseList(), new_root_name_join);
-  }
+  void joinOtherBase(std::unique_ptr<CSGBase> & base, std::string new_root_name_join);
 
   /**
    * @brief Join another CSGBase object to this one. The root universe for the incoming CSGBase
@@ -349,12 +338,7 @@ public:
    */
   void joinOtherBase(std::unique_ptr<CSGBase> & base,
                      std::string new_root_name_base,
-                     std::string new_root_name_join)
-  {
-    joinSurfaceList(base->getSurfaceList());
-    joinCellList(base->getCellList());
-    joinUniverseList(base->getUniverseList(), new_root_name_base, new_root_name_join);
-  }
+                     std::string new_root_name_join);
 
   /**
    * @brief generate the JSON representation output for the CSG object

@@ -87,6 +87,59 @@ CSGBase::updateCellRegion(const std::shared_ptr<CSGCell> cell, const CSGRegion &
   cell->updateRegion(region);
 }
 
+const std::shared_ptr<CSGSurface> &
+CSGBase::getSurfaceByName(const std::string name, const MeshGeneratorName mg_name)
+{
+  const auto surf_name = (mg_name.empty() ? _mg_name : mg_name) + "_" + name;
+  return _surface_list.getSurface(surf_name);
+}
+
+const std::shared_ptr<CSGUniverse> &
+CSGBase::getUniverseByName(const std::string name, const MeshGeneratorName mg_name)
+{
+  const auto univ_name = (mg_name.empty() ? _mg_name : mg_name) + "_" + name;
+  return _universe_list.getUniverse(univ_name);
+}
+
+void
+CSGBase::renameUniverse(const std::shared_ptr<CSGUniverse> universe, const std::string name)
+{
+  const auto univ_name = universe->isRoot() ? name : _mg_name + name;
+  _universe_list.renameUniverse(universe, univ_name);
+}
+
+void
+CSGBase::joinOtherBase(std::unique_ptr<CSGBase> & base)
+{
+  joinSurfaceList(base->getSurfaceList());
+  joinCellList(base->getCellList());
+  joinUniverseList(base->getUniverseList());
+}
+
+void
+CSGBase::joinOtherBase(std::unique_ptr<CSGBase> & base, std::string new_root_name_join)
+{
+  joinSurfaceList(base->getSurfaceList());
+  joinCellList(base->getCellList());
+  joinUniverseList(base->getUniverseList(), new_root_name_join);
+}
+
+void
+CSGBase::joinOtherBase(std::unique_ptr<CSGBase> & base,
+                       std::string new_root_name_base,
+                       std::string new_root_name_join)
+{
+  if (new_root_name_base == new_root_name_join)
+    mooseError("When joining CSGBase objects together with new universe names, provided names ",
+               new_root_name_base,
+               " and ",
+               new_root_name_join,
+               " must be different");
+  joinSurfaceList(base->getSurfaceList());
+  joinCellList(base->getCellList());
+  joinUniverseList(base->getUniverseList(), new_root_name_base, new_root_name_join);
+}
+
 void
 CSGBase::joinSurfaceList(CSGSurfaceList & surf_list)
 {

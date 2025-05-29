@@ -57,16 +57,16 @@ TestCSGUniverseMeshGenerator::generateCSG()
   // one level down from root.
   auto csg_bases = getCSGBasesByName(_input_mgs, this->name());
   std::unique_ptr<CSG::CSGBase> csg_mesh = std::move(*csg_bases[0]);
-  std::string new_base_name = _input_mgs[0] + "_univ";
+  std::string new_base_name = _input_mgs[0] + "_root";
   std::unique_ptr<CSG::CSGBase> inp_csg_mesh = std::move(*csg_bases[1]);
-  std::string new_join_name = _input_mgs[1] + "_univ";
+  std::string new_join_name = _input_mgs[1] + "_root";
 
   // joining via this method will move both roots into new universes;
   // subsequent input CSGBases will be joined uisng a different method (below)
   csg_mesh->joinOtherBase(inp_csg_mesh, new_base_name, new_join_name);
 
   // new universe to collect all others into a main one
-  auto new_univ = csg_mesh->createUniverse(mg_name + "_univ");
+  auto new_univ = csg_mesh->createUniverse("main_univ");
 
   // for all input meshes, create a containment cell, but only join CSGBases
   // for ones that were not joined above (i > 1)
@@ -79,15 +79,11 @@ TestCSGUniverseMeshGenerator::generateCSG()
       // join this incoming base at the same level as the other bases that already
       // were joined, so incoming root is renamed but the current root remains
       inp_csg_mesh = std::move(*csg_bases[i]);
-      new_join_name = img + "_univ";
+      new_join_name = img + "_root";
       csg_mesh->joinOtherBase(inp_csg_mesh, new_join_name);
     }
 
-    std::string current_univ_name;
-    if (i == 0)
-      current_univ_name = new_base_name;
-    else
-      current_univ_name = new_join_name;
+    std::string current_univ_name = (i == 0) ? new_base_name : new_join_name;
 
     // create a cell containing the new (root) univ
     // cell is located at the origin of the original cells - just use one cell to get origin
@@ -139,22 +135,22 @@ TestCSGUniverseMeshGenerator::generateCSG()
   // make cell with surfaces from bounding_box input and fill cell with new universe containing the
   // other cells
   auto x_pos_surf =
-      csg_mesh->createPlaneFromCoefficients(mg_name + "_bb_x_pos_surf", 1.0, 0, 0, 0.5 * _x_side);
+      csg_mesh->createPlaneFromCoefficients("bb_x_pos_surf", 1.0, 0, 0, 0.5 * _x_side);
   auto x_neg_surf =
-      csg_mesh->createPlaneFromCoefficients(mg_name + "_bb_x_neg_surf", 1.0, 0, 0, -0.5 * _x_side);
+      csg_mesh->createPlaneFromCoefficients("bb_x_neg_surf", 1.0, 0, 0, -0.5 * _x_side);
   auto y_pos_surf =
-      csg_mesh->createPlaneFromCoefficients(mg_name + "_bb_y_pos_surf", 0, 1.0, 0, 0.5 * _y_side);
+      csg_mesh->createPlaneFromCoefficients("bb_y_pos_surf", 0, 1.0, 0, 0.5 * _y_side);
   auto y_neg_surf =
-      csg_mesh->createPlaneFromCoefficients(mg_name + "_bb_y_neg_surf", 0, 1.0, 0, -0.5 * _y_side);
+      csg_mesh->createPlaneFromCoefficients("bb_y_neg_surf", 0, 1.0, 0, -0.5 * _y_side);
   auto z_pos_surf =
-      csg_mesh->createPlaneFromCoefficients(mg_name + "_bb_z_pos_surf", 0, 0, 1.0, 0.5 * _z_side);
+      csg_mesh->createPlaneFromCoefficients("bb_z_pos_surf", 0, 0, 1.0, 0.5 * _z_side);
   auto z_neg_surf =
-      csg_mesh->createPlaneFromCoefficients(mg_name + "_bb_z_neg_surf", 0, 0, 1.0, -0.5 * _z_side);
+      csg_mesh->createPlaneFromCoefficients("bb_z_neg_surf", 0, 0, 1.0, -0.5 * _z_side);
   auto bb_region =
       -x_pos_surf & +x_neg_surf & -y_pos_surf & +y_neg_surf & -z_pos_surf & +z_neg_surf;
 
   // create a cell that is added to root
-  auto bounding_cell = csg_mesh->createCell(mg_name + "_box", new_univ, bb_region);
+  auto bounding_cell = csg_mesh->createCell("box", new_univ, bb_region);
 
   return csg_mesh;
 }

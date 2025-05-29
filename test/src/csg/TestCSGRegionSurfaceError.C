@@ -39,7 +39,7 @@ TestCSGRegionSurfaceError::generate()
 std::unique_ptr<CSG::CSGBase>
 TestCSGRegionSurfaceError::generateCSG()
 {
-  const auto csg_bases = getCSGBases("input_meshes");
+  const auto csg_bases = getCSGBases("input_meshes", this->name());
   std::unique_ptr<CSG::CSGBase> csg_1 = std::move(*csg_bases[0]);
   std::unique_ptr<CSG::CSGBase> csg_2 = std::move(*csg_bases[1]);
 

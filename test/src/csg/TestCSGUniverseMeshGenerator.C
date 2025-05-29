@@ -55,7 +55,7 @@ TestCSGUniverseMeshGenerator::generateCSG()
 
   // start by joining the first two sets of cylinders at the same level and push
   // one level down from root.
-  auto csg_bases = getCSGBasesByName(_input_mgs);
+  auto csg_bases = getCSGBasesByName(_input_mgs, this->name());
   std::unique_ptr<CSG::CSGBase> csg_mesh = std::move(*csg_bases[0]);
   std::string new_base_name = _input_mgs[0] + "_univ";
   std::unique_ptr<CSG::CSGBase> inp_csg_mesh = std::move(*csg_bases[1]);

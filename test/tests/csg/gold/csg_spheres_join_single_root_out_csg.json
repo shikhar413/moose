@@ -10,14 +10,34 @@
       "FILLTYPE": "MATERIAL",
       "REGION": "-PointSphere_sphere_surf"
     },
-    "square_cell": {
+    "inf_square_square_cell": {
       "FILL": "square_material",
       "FILLTYPE": "MATERIAL",
       "REGION":
-          "(+surf_plus_x & -surf_minus_x & -surf_plus_y & +surf_minus_y & -surf_plus_z & +surf_minus_z)"
+          "(+inf_square_surf_plus_x & -inf_square_surf_minus_x & -inf_square_surf_plus_y & +inf_square_surf_minus_y & -Cube_surf_plus_z & +Cube_surf_minus_z)"
     }
   },
   "SURFACES": {
+    "Cube_surf_minus_z": {
+      "BOUNDARY": "transmission",
+      "COEFFICIENTS": {
+        "a": 0.0,
+        "b": 0.0,
+        "c": 1.0,
+        "d": -2.5
+      },
+      "TYPE": "plane"
+    },
+    "Cube_surf_plus_z": {
+      "BOUNDARY": "transmission",
+      "COEFFICIENTS": {
+        "a": 0.0,
+        "b": 0.0,
+        "c": 1.0,
+        "d": 2.5
+      },
+      "TYPE": "plane"
+    },
     "OriginSphere_sphere_surf": {
       "BOUNDARY": "transmission",
       "COEFFICIENTS": {
@@ -38,7 +58,7 @@
       },
       "TYPE": "sphere"
     },
-    "surf_minus_x": {
+    "inf_square_surf_minus_x": {
       "BOUNDARY": "transmission",
       "COEFFICIENTS": {
         "a": -1.0,
@@ -48,7 +68,7 @@
       },
       "TYPE": "plane"
     },
-    "surf_minus_y": {
+    "inf_square_surf_minus_y": {
       "BOUNDARY": "transmission",
       "COEFFICIENTS": {
         "a": 0.0,
@@ -58,17 +78,7 @@
       },
       "TYPE": "plane"
     },
-    "surf_minus_z": {
-      "BOUNDARY": "transmission",
-      "COEFFICIENTS": {
-        "a": 0.0,
-        "b": 0.0,
-        "c": 1.0,
-        "d": -2.5
-      },
-      "TYPE": "plane"
-    },
-    "surf_plus_x": {
+    "inf_square_surf_plus_x": {
       "BOUNDARY": "transmission",
       "COEFFICIENTS": {
         "a": -1.0,
@@ -78,33 +88,23 @@
       },
       "TYPE": "plane"
     },
-    "surf_plus_y": {
+    "inf_square_surf_plus_y": {
       "BOUNDARY": "transmission",
       "COEFFICIENTS": {
         "a": 0.0,
         "b": 1.0,
         "c": 0.0,
-        "d": 2.5
-      },
-      "TYPE": "plane"
-    },
-    "surf_plus_z": {
-      "BOUNDARY": "transmission",
-      "COEFFICIENTS": {
-        "a": 0.0,
-        "b": 0.0,
-        "c": 1.0,
         "d": 2.5
       },
       "TYPE": "plane"
     }
   },
   "UNIVERSES": {
-    "ComboUniverse_root": {
+    "root": {
       "CELLS": [
         "PointSphere_sphere_cell",
         "OriginSphere_sphere_cell",
-        "square_cell"
+        "inf_square_square_cell"
       ],
       "ROOT": true
     }

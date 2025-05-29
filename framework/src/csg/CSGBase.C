@@ -73,6 +73,13 @@ CSGBase::createCell(const std::string name,
   return cell;
 }
 
+const std::shared_ptr<CSGCell> &
+CSGBase::getCellByName(const std::string name, const MeshGeneratorName mg_name)
+{
+  const auto cell_name = (mg_name.empty() ? _mg_name : mg_name) + "_" + name;
+  return _cell_list.getCell(cell_name);
+}
+
 void
 CSGBase::updateCellRegion(const std::shared_ptr<CSGCell> cell, const CSGRegion & region)
 {

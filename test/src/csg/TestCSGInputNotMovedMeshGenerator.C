@@ -40,7 +40,7 @@ TestCSGInputNotMovedMeshGenerator::generate()
 std::unique_ptr<CSG::CSGBase>
 TestCSGInputNotMovedMeshGenerator::generateCSG()
 {
-  static_cast<void>(getCSGBase("input"));
+  static_cast<void>(getCSGBase("input", this->name()));
 
   // Create temporary CSG object to return
   auto csg_mesh = std::make_unique<CSG::CSGBase>(this->name());

@@ -43,11 +43,12 @@ TestCSGAxialSurfaceMeshGenerator::generate()
 std::unique_ptr<CSG::CSGBase>
 TestCSGAxialSurfaceMeshGenerator::generateCSG()
 {
-  std::unique_ptr<CSG::CSGBase> input_mesh = std::move(getCSGBase("input"));
+  const auto input_mg_name = getParam<MeshGeneratorName>("input");
+  std::unique_ptr<CSG::CSGBase> input_mesh =
+      std::move(getCSGBaseByName(input_mg_name, this->name()));
 
-  auto root_univ = input_mesh->getRootUniverse();
   const auto cell_name = "square_cell";
-  auto cell_ptr = root_univ->getCell(cell_name);
+  auto cell_ptr = input_mesh->getCellByName(cell_name, input_mg_name);
   auto cell_region = cell_ptr->getRegion();
   const auto centroid = Point(0, 0, 0);
 

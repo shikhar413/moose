@@ -47,7 +47,7 @@ TestCSGRenameError::generateCSG()
   //  cell: square_cell
   //  surfaces: surf_[plus/minus]_[x/y]
   //  one universe: ROOT_UNIVERSE
-  const auto csg_bases = getCSGBases("input_meshes");
+  const auto csg_bases = getCSGBases("input_meshes", this->name());
   std::unique_ptr<CSG::CSGBase> csg_1 = std::move(*csg_bases[0]);
   std::unique_ptr<CSG::CSGBase> csg_2 = std::move(*csg_bases[1]);
 

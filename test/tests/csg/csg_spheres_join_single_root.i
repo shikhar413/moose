@@ -18,7 +18,7 @@
     axial_height = 5
   []
   [ComboUniverse]
-    type=TestCSGJoinBasesMeshGenerator
+    type = TestCSGJoinBasesMeshGenerator
     input_meshes = 'PointSphere OriginSphere Cube'
   []
 []

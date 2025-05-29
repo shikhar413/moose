@@ -220,36 +220,39 @@ MeshGenerator::getMeshesByName(const std::vector<MeshGeneratorName> & mesh_gener
 }
 
 std::unique_ptr<CSG::CSGBase> &
-MeshGenerator::getCSGBase(const std::string & param_name)
+MeshGenerator::getCSGBase(const std::string & param_name, const MeshGeneratorName mg_name)
 {
   const MeshGeneratorName * name = getMeshGeneratorNameFromParam(param_name, false);
-  return getCSGBaseByName(*name);
+  return getCSGBaseByName(*name, mg_name);
 }
 
 std::unique_ptr<CSG::CSGBase> &
-MeshGenerator::getCSGBaseByName(const MeshGeneratorName & mesh_generator_name)
+MeshGenerator::getCSGBaseByName(const MeshGeneratorName & mesh_generator_name,
+                                const MeshGeneratorName mg_name)
 {
   checkGetMesh(mesh_generator_name, "");
 
   auto & csg_mesh = _app.getMeshGeneratorSystem().getCSGBaseGeneratorOutput(mesh_generator_name);
   if (!csg_mesh)
     mooseError("Requested CSG mesh " + mesh_generator_name + " returned a null mesh.");
+  csg_mesh->updateMeshGeneratorName(mg_name);
   _requested_csg_meshes.emplace_back(mesh_generator_name, &csg_mesh);
   return csg_mesh;
 }
 
 std::vector<std::unique_ptr<CSG::CSGBase> *>
-MeshGenerator::getCSGBases(const std::string & param_name)
+MeshGenerator::getCSGBases(const std::string & param_name, const MeshGeneratorName mg_name)
 {
-  return getCSGBasesByName(getMeshGeneratorNamesFromParam(param_name));
+  return getCSGBasesByName(getMeshGeneratorNamesFromParam(param_name), mg_name);
 }
 
 std::vector<std::unique_ptr<CSG::CSGBase> *>
-MeshGenerator::getCSGBasesByName(const std::vector<MeshGeneratorName> & mesh_generator_names)
+MeshGenerator::getCSGBasesByName(const std::vector<MeshGeneratorName> & mesh_generator_names,
+                                 const MeshGeneratorName mg_name)
 {
   std::vector<std::unique_ptr<CSG::CSGBase> *> csg_bases;
   for (const auto & name : mesh_generator_names)
-    csg_bases.push_back(&getCSGBaseByName(name));
+    csg_bases.push_back(&getCSGBaseByName(name, mg_name));
   return csg_bases;
 }
 

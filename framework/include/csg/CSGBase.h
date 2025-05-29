@@ -209,10 +209,8 @@ public:
    * @param name cell name
    * @return shared pointer to CSGCell object
    */
-  const std::shared_ptr<CSGCell> & getCellByName(const std::string name)
-  {
-    return _cell_list.getCell(name);
-  }
+  const std::shared_ptr<CSGCell> & getCellByName(const std::string name,
+                                                 const MeshGeneratorName input_mg_name = "");
 
   /**
    * @brief rename the specified cell
@@ -363,6 +361,13 @@ public:
    *
    */
   nlohmann::json generateOutput() const;
+
+  /**
+   * @brief update the name of the mesh generator that claims ownership of CSGBase object
+   *
+   * @param new_name name of mesh generator
+   */
+  void updateMeshGeneratorName(const MeshGeneratorName new_name) { _mg_name = new_name; }
 
 private:
   /**

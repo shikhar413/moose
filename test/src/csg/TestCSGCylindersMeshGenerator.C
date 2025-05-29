@@ -48,8 +48,7 @@ TestCSGCylindersMeshGenerator::generate()
 std::unique_ptr<CSG::CSGBase>
 TestCSGCylindersMeshGenerator::generateCSG()
 {
-  auto csg_mesh = std::make_unique<CSG::CSGBase>();
-  auto mg_name = this->name();
+  auto csg_mesh = std::make_unique<CSG::CSGBase>(this->name());
 
   // create the top and bottom planes
   Real a = 0;
@@ -61,17 +60,16 @@ TestCSGCylindersMeshGenerator::generateCSG()
     b = 1;
   else if (_axis == "z")
     c = 1;
-  auto pos_plane = csg_mesh->createPlaneFromCoefficients(mg_name + "_pos_plane", a, b, c, _h / 2);
-  auto neg_plane =
-      csg_mesh->createPlaneFromCoefficients(mg_name + "_neg_plane", a, b, c, -1 * _h / 2);
+  auto pos_plane = csg_mesh->createPlaneFromCoefficients("pos_plane", a, b, c, _h / 2);
+  auto neg_plane = csg_mesh->createPlaneFromCoefficients("neg_plane", a, b, c, -1 * _h / 2);
 
   std::string prev_surf_name;
   for (unsigned int i = 0; i < _radii.size(); ++i)
   {
-    std::string surf_name = mg_name + "_surf_cyl_" + _axis + "_" + std::to_string(i);
+    std::string surf_name = "surf_cyl_" + _axis + "_" + std::to_string(i);
     auto cyl_surf = csg_mesh->createCylinder(surf_name, _x0, _x1, _radii[i], _axis);
     CSG::CSGRegion region;
-    std::string cell_name = mg_name + "_cell_cyl_" + _axis + "_" + std::to_string(i);
+    std::string cell_name = "cell_cyl_" + _axis + "_" + std::to_string(i);
     if (i == 0)
       region = -cyl_surf & -pos_plane & +neg_plane;
     else

@@ -1,20 +1,20 @@
 {
   "CELLS": {
-    "square_cell": {
+    "csg_region_types_square_cell": {
       "FILL": "square_material",
       "FILLTYPE": "MATERIAL",
       "REGION":
-          "((+surf_minus_x & -surf_plus_y & -surf_minus_y & -surf_zero_y) | (-surf_plus_x & -surf_plus_y & -surf_minus_y & +surf_zero_y))"
+          "((+csg_region_types_surf_minus_x & -csg_region_types_surf_plus_y & -csg_region_types_surf_minus_y & -csg_region_types_surf_zero_y) | (-csg_region_types_surf_plus_x & -csg_region_types_surf_plus_y & -csg_region_types_surf_minus_y & +csg_region_types_surf_zero_y))"
     },
-    "void_cell": {
+    "csg_region_types_void_cell": {
       "FILL": "",
       "FILLTYPE": "VOID",
       "REGION":
-          "~((+surf_minus_x & -surf_plus_y & -surf_minus_y & -surf_zero_y) | (-surf_plus_x & -surf_plus_y & -surf_minus_y & +surf_zero_y))"
+          "~((+csg_region_types_surf_minus_x & -csg_region_types_surf_plus_y & -csg_region_types_surf_minus_y & -csg_region_types_surf_zero_y) | (-csg_region_types_surf_plus_x & -csg_region_types_surf_plus_y & -csg_region_types_surf_minus_y & +csg_region_types_surf_zero_y))"
     }
   },
   "SURFACES": {
-    "surf_minus_x": {
+    "csg_region_types_surf_minus_x": {
       "BOUNDARY": "transmission",
       "COEFFICIENTS": {
         "a": 0.0,
@@ -24,7 +24,7 @@
       },
       "TYPE": "plane"
     },
-    "surf_minus_y": {
+    "csg_region_types_surf_minus_y": {
       "BOUNDARY": "transmission",
       "COEFFICIENTS": {
         "a": -1.0,
@@ -34,7 +34,7 @@
       },
       "TYPE": "plane"
     },
-    "surf_plus_x": {
+    "csg_region_types_surf_plus_x": {
       "BOUNDARY": "transmission",
       "COEFFICIENTS": {
         "a": 0.0,
@@ -44,7 +44,7 @@
       },
       "TYPE": "plane"
     },
-    "surf_plus_y": {
+    "csg_region_types_surf_plus_y": {
       "BOUNDARY": "transmission",
       "COEFFICIENTS": {
         "a": 1.0,
@@ -54,7 +54,7 @@
       },
       "TYPE": "plane"
     },
-    "surf_zero_y": {
+    "csg_region_types_surf_zero_y": {
       "BOUNDARY": "transmission",
       "COEFFICIENTS": {
         "a": 1.0,
@@ -68,8 +68,8 @@
   "UNIVERSES": {
     "ROOT_UNIVERSE": {
       "CELLS": [
-        "square_cell",
-        "void_cell"
+        "csg_region_types_square_cell",
+        "csg_region_types_void_cell"
       ],
       "ROOT": true
     }

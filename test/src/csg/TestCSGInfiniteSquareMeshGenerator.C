@@ -41,7 +41,7 @@ TestCSGInfiniteSquareMeshGenerator::generate()
 std::unique_ptr<CSG::CSGBase>
 TestCSGInfiniteSquareMeshGenerator::generateCSG()
 {
-  auto csg_mesh = std::make_unique<CSG::CSGBase>();
+  auto csg_mesh = std::make_unique<CSG::CSGBase>(this->name());
   const auto centroid = Point(0, 0, 0);
 
   // Add surfaces and halfspaces corresponding to 4 planes of infinite square

@@ -12,8 +12,11 @@
 namespace CSG
 {
 
-CSGBase::CSGBase()
-  : _surface_list(CSGSurfaceList()), _cell_list(CSGCellList()), _universe_list(CSGUniverseList())
+CSGBase::CSGBase(const MeshGeneratorName mg_name)
+  : _surface_list(CSGSurfaceList()),
+    _cell_list(CSGCellList()),
+    _universe_list(CSGUniverseList()),
+    _mg_name(mg_name)
 {
 }
 
@@ -26,7 +29,8 @@ CSGBase::createCell(const std::string name,
                     std::shared_ptr<CSGUniverse> add_to_univ)
 {
   checkRegionSurfaces(region);
-  auto cell = _cell_list.addMaterialCell(name, mat_name, region);
+  const auto cell_name = _mg_name + "_" + name;
+  auto cell = _cell_list.addMaterialCell(cell_name, mat_name, region);
   if (add_to_univ)
     add_to_univ->addCell(cell);
   else
@@ -40,7 +44,8 @@ CSGBase::createCell(const std::string name,
                     const std::shared_ptr<CSGUniverse> add_to_univ)
 {
   checkRegionSurfaces(region);
-  auto cell = _cell_list.addVoidCell(name, region);
+  const auto cell_name = _mg_name + "_" + name;
+  auto cell = _cell_list.addVoidCell(cell_name, region);
   if (add_to_univ)
     add_to_univ->addCell(cell);
   else
@@ -59,7 +64,8 @@ CSGBase::createCell(const std::string name,
     mooseError("Cell " + name +
                " cannot be filled with the same universe to which it is being added.");
 
-  auto cell = _cell_list.addUniverseCell(name, fill_univ, region);
+  const auto cell_name = _mg_name + "_" + name;
+  auto cell = _cell_list.addUniverseCell(cell_name, fill_univ, region);
   if (add_to_univ)
     add_to_univ->addCell(cell);
   else

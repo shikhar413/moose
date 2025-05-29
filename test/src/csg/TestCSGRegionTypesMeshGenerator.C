@@ -40,7 +40,7 @@ TestCSGRegionTypesMeshGenerator::generate()
 std::unique_ptr<CSG::CSGBase>
 TestCSGRegionTypesMeshGenerator::generateCSG()
 {
-  auto csg_mesh = std::make_unique<CSG::CSGBase>();
+  auto csg_mesh = std::make_unique<CSG::CSGBase>(this->name());
   auto root_univ = csg_mesh->getRootUniverse();
 
   // initialize all surfaces to be represented

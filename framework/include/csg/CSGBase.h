@@ -32,8 +32,10 @@ class CSGBase
 public:
   /**
    * Default constructor
+   *
+   * @param mg_name Name of mesh generator that is creating CSGBase object
    */
-  CSGBase();
+  CSGBase(const MeshGeneratorName mg_name);
 
   /**
    * Destructor
@@ -52,7 +54,7 @@ public:
   std::shared_ptr<CSGSurface>
   createPlaneFromPoints(const std::string name, const Point p1, const Point p2, const Point p3)
   {
-    return _surface_list.addPlaneFromPoints(name, p1, p2, p3);
+    return _surface_list.addPlaneFromPoints(_mg_name + "_" + name, p1, p2, p3);
   }
 
   /**
@@ -68,7 +70,7 @@ public:
   std::shared_ptr<CSGSurface> createPlaneFromCoefficients(
       const std::string name, const Real a, const Real b, const Real c, const Real d)
   {
-    return _surface_list.addPlaneFromCoefficients(name, a, b, c, d);
+    return _surface_list.addPlaneFromCoefficients(_mg_name + "_" + name, a, b, c, d);
   }
 
   /**
@@ -80,7 +82,7 @@ public:
    */
   std::shared_ptr<CSGSurface> createSphere(const std::string name, const Real r)
   {
-    return _surface_list.addSphere(name, Point(0.0, 0.0, 0.0), r);
+    return _surface_list.addSphere(_mg_name + "_" + name, Point(0.0, 0.0, 0.0), r);
   }
 
   /**
@@ -93,7 +95,7 @@ public:
    */
   std::shared_ptr<CSGSurface> createSphere(const std::string name, const Point center, const Real r)
   {
-    return _surface_list.addSphere(name, center, r);
+    return _surface_list.addSphere(_mg_name + "_" + name, center, r);
   }
 
   /**
@@ -112,7 +114,7 @@ public:
   std::shared_ptr<CSGSurface> createCylinder(
       const std::string name, const Real x0, const Real x1, const Real r, const std::string axis)
   {
-    return _surface_list.addCylinder(name, x0, x1, r, axis);
+    return _surface_list.addCylinder(_mg_name + "_" + name, x0, x1, r, axis);
   }
 
   /**
@@ -267,7 +269,7 @@ public:
    */
   std::shared_ptr<CSGUniverse> createUniverse(const std::string name)
   {
-    return _universe_list.addUniverse(name);
+    return _universe_list.addUniverse(_mg_name + "_" + name);
   }
 
   /**
@@ -280,7 +282,7 @@ public:
   std::shared_ptr<CSGUniverse> createUniverse(const std::string name,
                                               std::vector<std::shared_ptr<CSGCell>> cells)
   {
-    return _universe_list.addUniverse(name, cells);
+    return _universe_list.addUniverse(_mg_name + "_" + name, cells);
   }
 
   /**
@@ -363,15 +365,6 @@ public:
   nlohmann::json generateOutput() const;
 
 private:
-  /// List of surfaces associated with CSG object
-  CSGSurfaceList _surface_list;
-
-  /// List of surfaces associated with CSG object
-  CSGCellList _cell_list;
-
-  /// List of universes associated with CSG object
-  CSGUniverseList _universe_list;
-
   /**
    * @brief Get the CSGSurfaceList object
    *
@@ -443,5 +436,17 @@ private:
 
   // check that surfaces used in this region are a part of this CSGBase instance
   void checkRegionSurfaces(const CSGRegion & region);
+
+  /// List of surfaces associated with CSG object
+  CSGSurfaceList _surface_list;
+
+  /// List of surfaces associated with CSG object
+  CSGCellList _cell_list;
+
+  /// List of universes associated with CSG object
+  CSGUniverseList _universe_list;
+
+  /// Name of MeshGenerator creating CSG object. This name will be pre-pended by all surface, universe, and cell names
+  MeshGeneratorName _mg_name;
 };
 } // namespace CSG

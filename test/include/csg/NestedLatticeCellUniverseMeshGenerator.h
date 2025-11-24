@@ -11,12 +11,12 @@
 
 #include "MeshGenerator.h"
 
-class NestedCellUniverseMeshGenerator : public MeshGenerator
+class NestedLatticeCellUniverseMeshGenerator : public MeshGenerator
 {
 public:
   static InputParameters validParams();
 
-  NestedCellUniverseMeshGenerator(const InputParameters & parameters);
+  NestedLatticeCellUniverseMeshGenerator(const InputParameters & parameters);
 
   std::unique_ptr<MeshBase> generate() override;
 
@@ -29,4 +29,6 @@ protected:
   const Real _inner_rad;
   /// radius of outer sphere surface
   const Real _outer_rad;
+  /// radius of lattice sphere surface
+  const Real _lattice_rad;
 };

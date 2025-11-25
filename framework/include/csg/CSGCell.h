@@ -124,6 +124,14 @@ public:
    */
   const std::string & getRegionAsString() const { return _region.toString(); }
 
+  /**
+   * @brief Check if cell region contains particular surface
+   *
+   * @param surf surface to check existence of in cell region
+   * @return true if surface exists in cell region, false otherwise
+   */
+  bool regionHasSurface(const CSGSurface & surf) const;
+
   /// Operator overload for checking if two CSGCell objects are equal
   bool operator==(const CSGCell & other) const;
 
@@ -138,6 +146,17 @@ protected:
   // update the region of the cell to a new region - not public because
   // it needs to be called from CSGBase so that the surfaces can be checked first.
   void updateRegion(const CSGRegion & region) { _region = region; }
+
+  /**
+   * @brief Update region string based on surface renaming
+   *
+   * @param old_name original name of surface
+   * @param new_name new name of surface
+   */
+  void updateRegionString(const std::string & old_name, const std::string & new_name)
+  {
+    _region.updateSurfaceName(old_name, new_name);
+  }
 
   /// Name of surface
   std::string _name;

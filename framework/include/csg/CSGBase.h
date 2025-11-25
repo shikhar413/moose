@@ -87,10 +87,7 @@ public:
    * @param surface CSGSurface to rename
    * @param name new name
    */
-  void renameSurface(const CSGSurface & surface, const std::string & name)
-  {
-    _surface_list.renameSurface(surface, name);
-  }
+  void renameSurface(const CSGSurface & surface, const std::string & name);
 
   /**
    * @brief Create a Material Cell object

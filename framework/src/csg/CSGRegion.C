@@ -126,6 +126,33 @@ stripRegionString(std::string region_str, std::string op)
   return region_str;
 }
 
+void
+CSGRegion::updateSurfaceName(const std::string & old_name, const std::string & new_name)
+{
+  const auto len_name = old_name.size();
+  // Regular expression checks for old surface name prepended by + or - and followed by
+  // a horizontal space, ), or end of string
+  const std::regex exp{"[+-]" + old_name + "([ )]|$)"};
+  // Stores indices in string where regex matches occur
+  std::vector<int> index_matches;
+
+  for (auto it = std::sregex_iterator(_region_str.begin(), _region_str.end(), exp);
+       it != std::sregex_iterator();
+       ++it)
+    index_matches.push_back(it->position());
+
+  std::cout << "Original region string: " << _region_str << "\n";
+
+  for (int i = index_matches.size() - 1; i >= 0; --i)
+  {
+    const auto index_match = index_matches[i];
+    const auto substr_before = _region_str.substr(0, index_match + 1);
+    const auto substr_after = _region_str.substr(index_match + 1 + len_name);
+    _region_str = substr_before + new_name + substr_after;
+  }
+  std::cout << "New region string: " << _region_str << "\n";
+}
+
 // Operators for region construction
 
 // positive halfspace

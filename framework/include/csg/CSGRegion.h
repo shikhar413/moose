@@ -100,6 +100,14 @@ public:
     return _surfaces;
   }
 
+  /**
+   * @brief Update region string based on surface renaming
+   *
+   * @param old_name original name of surface
+   * @param new_name new name of surface
+   */
+  void updateSurfaceName(const std::string & old_name, const std::string & new_name);
+
   /// Operator overload for &= which creates an intersection between the current region and the other_region
   CSGRegion & operator&=(const CSGRegion & other_region);
 

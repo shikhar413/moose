@@ -134,6 +134,20 @@ protected:
    */
   void renameCell(const CSGCell & cell, const std::string & name);
 
+  /**
+   * @brief update region string of cell based on surface renaming
+   *
+   * @param cell name of cell
+   * @param old_name original name of surface
+   * @param new_name new name of surface
+   */
+  void updateRegionString(const CSGCell & cell,
+                          const std::string & old_name,
+                          const std::string & new_name)
+  {
+    getCell(cell.getName()).updateRegionString(old_name, new_name);
+  }
+
   /// Operator overload for checking if two CSGCellList objects are equal
   bool operator==(const CSGCellList & other) const;
 

@@ -76,6 +76,16 @@ CSGCell::getFillLattice() const
 }
 
 bool
+CSGCell::regionHasSurface(const CSGSurface & surf) const
+{
+  const auto & region_surfaces = getRegion().getSurfaces();
+  for (const auto & region_surf : region_surfaces)
+    if (region_surf.get() == surf)
+      return true;
+  return false;
+}
+
+bool
 CSGCell::operator==(const CSG::CSGCell & other) const
 {
   const auto name_eq = this->getName() == other.getName();

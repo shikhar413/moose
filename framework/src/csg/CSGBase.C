@@ -54,6 +54,18 @@ CSGBase::CSGBase(const CSGBase & other_base)
 
 CSGBase::~CSGBase() {}
 
+void
+CSGBase::renameSurface(const CSGSurface & surface, const std::string & name)
+{
+  const auto old_name = surface.getName();
+  _surface_list.renameSurface(surface, name);
+
+  // Update the region string for any regions that are defined by this surface
+  for (const auto & cell : getAllCells())
+    if (cell.get().regionHasSurface(surface))
+      _cell_list.updateRegionString(cell.get(), old_name, name);
+}
+
 const CSGCell &
 CSGBase::addCellToList(const CSGCell & cell)
 {

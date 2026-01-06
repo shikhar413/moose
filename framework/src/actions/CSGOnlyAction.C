@@ -78,5 +78,7 @@ CSGOnlyAction::act()
     csg_file.open(json_out);
     csg_file << csg_json.dump(/*indent=*/2);
     csg_file.close();
+
+    _csg_obj->generateOpenMCOutput(_app.getOutputFileBase());
   }
 }

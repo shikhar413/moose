@@ -8,6 +8,7 @@
 //* https://www.gnu.org/licenses/lgpl-2.1.html
 
 #include "CSGBase.h"
+#include "CSGHexagonalLattice.h"
 #include "CSGUtils.h"
 #include "JsonIO.h"
 
@@ -1714,6 +1715,484 @@ CSGBase::generateOutput() const
   }
 
   return csg_json;
+}
+
+void
+CSGBase::generateOpenMCOutput(const std::string & file_base) const
+{
+  // Manually define file_base to problem-specific output parameters
+  std::map<std::string, std::pair<Real, Real>> xy_plot_widths = {
+      {"pin_hex_2d_out", {5, 5}},
+      {"pin_hex_3d_out", {5, 5}},
+      {"pin_hex_homogenized_2d_out", {5, 5}},
+      {"pin_hex_homogenized_3d_out", {5, 5}},
+      {"pin_hex_single_assembly_2d_out", {10, 10}},
+      {"pin_hex_single_assembly_3d_out", {10, 10}},
+      {"pin_square_2d_out", {5, 5}},
+      {"pin_square_3d_out", {5, 5}},
+      {"pin_square_single_assembly_2d_out", {10, 10}},
+      {"abtr_het_assembly_out", {20, 20}},
+      {"assembly_hex_2d_out", {5, 5}},
+      {"assembly_hex_3d_out", {10, 10}},
+      {"assembly_square_2d_out", {3, 3}},
+      {"assembly_square_2d_background_out", {3, 3}},
+      {"assembly_square_3d_out", {3, 3}},
+      {"assembly_square_3d_background_out", {3, 3}},
+      {"abtr_het_core_out", {280, 280}},
+      {"core_square_mixed_background_duct_out", {6, 6}},
+      {"core_hex_out", {25, 25}},
+      {"core_square_single_assembly_out", {6, 6}},
+      {"core_hex_single_assembly_empty_out", {5, 5}},
+      {"core_hex_duct_het_empty_out", {5, 5}},
+      {"core_hex_periphery_out", {30, 30}},
+      {"core_square_out", {6, 6}},
+      {"core_square_empty_out", {6, 6}}
+  };
+  std::map<std::string, std::pair<Real, Real>> yz_plot_widths = {
+      {"pin_hex_2d_out", {5, 5}},
+      {"pin_hex_3d_out", {5, 5}},
+      {"pin_hex_homogenized_2d_out", {5, 5}},
+      {"pin_hex_homogenized_3d_out", {5, 5}},
+      {"pin_hex_single_assembly_2d_out", {10, 10}},
+      {"pin_hex_single_assembly_3d_out", {10, 10}},
+      {"pin_square_2d_out", {5, 5}},
+      {"pin_square_3d_out", {5, 5}},
+      {"pin_square_single_assembly_2d_out", {10, 10}},
+      {"abtr_het_assembly_out", {260, 260}},
+      {"assembly_hex_2d_out", {5, 5}},
+      {"assembly_hex_3d_out", {10, 10}},
+      {"assembly_square_2d_out", {3, 3}},
+      {"assembly_square_2d_background_out", {3, 3}},
+      {"assembly_square_3d_out", {3, 3}},
+      {"assembly_square_3d_background_out", {3, 3}},
+      {"abtr_het_core_out", {280, 280}},
+      {"core_square_mixed_background_duct_out", {6, 6}},
+      {"core_hex_out", {25, 25}},
+      {"core_square_single_assembly_out", {6, 6}},
+      {"core_hex_single_assembly_empty_out", {5, 5}},
+      {"core_hex_duct_het_empty_out", {5, 5}},
+      {"core_hex_periphery_out", {30, 30}},
+      {"core_square_out", {6, 6}},
+      {"core_square_empty_out", {6, 6}}
+  };
+  std::map<std::string, Point> plot_origins = {
+      {"pin_hex_2d_out", {0, 0, 0}},
+      {"pin_hex_3d_out", {0, 0, 1}},
+      {"pin_hex_homogenized_2d_out", {0, 0, 0}},
+      {"pin_hex_homogenized_3d_out", {0, 0, 0.5}},
+      {"pin_hex_single_assembly_2d_out", {0, 0, 0}},
+      {"pin_hex_single_assembly_3d_out", {0, 0, 0.5}},
+      {"pin_square_2d_out", {0, 0, 0}},
+      {"pin_square_3d_out", {0, 0, 1}},
+      {"pin_square_single_assembly_2d_out", {0, 0, 0}},
+      {"abtr_het_assembly_out", {0, 0, 130}},
+      {"assembly_hex_2d_out", {0, 0, 0}},
+      {"assembly_hex_3d_out", {0, 0, 1}},
+      {"assembly_square_2d_out", {0, 0, 0}},
+      {"assembly_square_2d_background_out", {0, 0, 0}},
+      {"assembly_square_3d_out", {0, 0, 1}},
+      {"assembly_square_3d_background_out", {0, 0, 1}},
+      {"abtr_het_core_out", {0, 0, 130}},
+      {"core_square_mixed_background_duct_out", {0, 0, 0.5}},
+      {"core_hex_out", {0, 0, 1}},
+      {"core_square_single_assembly_out", {0, 0, 0.5}},
+      {"core_hex_single_assembly_empty_out", {0, 0, 0.5}},
+      {"core_hex_duct_het_empty_out", {0, 0, 0.5}},
+      {"core_hex_periphery_out", {0, 0, 0.5}},
+      {"core_square_out", {0, 0, 0.5}},
+      {"core_square_empty_out", {0, 0, 0.5}}
+  };
+
+  if (xy_plot_widths.find(file_base) == xy_plot_widths.end())
+    mooseError(file_base, " not in xy_plot_widths");
+  if (yz_plot_widths.find(file_base) == yz_plot_widths.end())
+    mooseError(file_base, " not in yz_plot_widths");
+  if (plot_origins.find(file_base) == plot_origins.end())
+    mooseError(file_base, " not in plot_origins");
+
+  auto xy_plot_width = xy_plot_widths[file_base];
+  auto xy_plot_origin = plot_origins[file_base];
+  auto yz_plot_width = yz_plot_widths[file_base];
+  auto yz_plot_origin = plot_origins[file_base];
+  auto outer_boundary_surfs = getOuterBoundarySurfs();
+
+  std::vector<std::pair<std::string, std::string>> linked_cell_lattice_universe_names;
+  std::set<std::string> linked_surface_names;
+  std::set<std::string> linked_material_names;
+
+  Moose::out << "Generating OpenMC output\n******************************\n";
+  getLinkedCSGComponents(getRootUniverse(),
+                         linked_cell_lattice_universe_names,
+                         linked_surface_names,
+                         linked_material_names);
+
+  Moose::out << "import openmc\n\n";
+
+  // TODO default material compositions for now
+  Moose::out << "# Define material fills as materials\n";
+  for (const auto & mat_name : linked_material_names)
+  {
+    Moose::out << mat_name << " = openmc.Material(name=\"" << mat_name << "\")\n";
+    Moose::out << mat_name << ".add_nuclide('U235', 0.03)\n";
+    Moose::out << mat_name << ".add_nuclide('U238', 0.97)\n";
+    Moose::out << mat_name << ".add_nuclide('O16', 2.0)\n";
+    Moose::out << mat_name << ".set_density('g/cm3', 10.0)\n\n";
+  }
+  Moose::out << "openmc_mats = openmc.Materials([" << Moose::stringify(linked_material_names)
+             << "])\n";
+  Moose::out << "openmc_mats.export_to_xml()\n\n";
+
+  Moose::out << "# Define surfaces\n";
+  for (const auto & surf_name : linked_surface_names)
+    defineOpenMCSurface(surf_name,
+                        outer_boundary_surfs.find(surf_name) != outer_boundary_surfs.end());
+  Moose::out << "\n";
+
+  Moose::out << "# Define cells, universes, and lattices\n";
+  std::set<std::string> geometry_cells;
+  std::set<std::string> geometry_univs;
+  std::set<std::string> geometry_lattices;
+  for (const auto & [csg_component_name, component_type] : linked_cell_lattice_universe_names)
+  {
+    if (component_type == "cell")
+    {
+      if (geometry_cells.find(csg_component_name) == geometry_cells.end())
+        defineOpenMCCell(csg_component_name);
+      geometry_cells.insert(csg_component_name);
+    }
+    else if (component_type == "universe")
+    {
+      if (geometry_univs.find(csg_component_name) == geometry_univs.end())
+        defineOpenMCUniverse(csg_component_name);
+      geometry_univs.insert(csg_component_name);
+    }
+    else if (component_type == "lattice")
+    {
+      if (geometry_lattices.find(csg_component_name) == geometry_lattices.end())
+        defineOpenMCLattice(csg_component_name);
+      geometry_lattices.insert(csg_component_name);
+    }
+    else
+      mooseError("Undefined CSG component type\n");
+  }
+  Moose::out << "geom = openmc.Geometry(root_universe)\n";
+  Moose::out << "geom.export_to_xml()\n\n";
+
+  Moose::out << "# Define settings\n";
+  Moose::out << "point = openmc.stats.Point((" << yz_plot_origin(0) << ", " << yz_plot_origin(1)
+             << ", " << yz_plot_origin(2) << "))\n";
+  Moose::out << "src = openmc.Source(space=point)\n";
+  Moose::out << "settings = openmc.Settings()\n";
+  Moose::out << "settings.source = src\n";
+  Moose::out << "settings.batches = 100\n";
+  Moose::out << "settings.inactive = 10\n";
+  Moose::out << "settings.particles = 1000\n";
+  Moose::out << "settings.export_to_xml()\n\n";
+
+  Moose::out << "xy_plot = openmc.Plot()\n";
+  Moose::out << "xy_plot.filename = 'xyplot'\n";
+  Moose::out << "xy_plot.width = (" << xy_plot_width.first << ", " << xy_plot_width.second << ")\n";
+  Moose::out << "xy_plot.pixels = (1000, 1000)\n";
+  Moose::out << "xy_plot.color_by = 'material'\n";
+  Moose::out << "xy_plot.origin = (" << xy_plot_origin(0) << ", " << xy_plot_origin(1) << ", "
+             << xy_plot_origin(2) << ")\n\n";
+
+  Moose::out << "yz_plot = openmc.Plot()\n";
+  Moose::out << "yz_plot.filename = 'yzplot'\n";
+  Moose::out << "yz_plot.width = (" << yz_plot_width.first << ", " << yz_plot_width.second << ")\n";
+  Moose::out << "yz_plot.pixels = (1000, 1000)\n";
+  Moose::out << "yz_plot.color_by = 'material'\n";
+  Moose::out << "yz_plot.basis = 'yz'\n";
+  Moose::out << "yz_plot.origin = (" << yz_plot_origin(0) << ", " << yz_plot_origin(1) << ", "
+             << yz_plot_origin(2) << ")\n\n";
+  Moose::out << "plots = openmc.Plots([xy_plot, yz_plot])\n";
+  Moose::out << "plots.export_to_xml()\n\n";
+
+  Moose::out << "openmc.run(threads=1)\n";
+  Moose::out << "openmc.plot_geometry()\n";
+}
+
+std::set<std::string>
+CSGBase::getOuterBoundarySurfs() const
+{
+  std::set<std::string> outer_surfs;
+  const auto & root_cells = getRootUniverse().getAllCells();
+  for (const auto & cell : root_cells)
+  {
+    const auto & cell_surfaces = cell.get().getRegion().getSurfaces();
+    for (const auto & surf : cell_surfaces)
+      outer_surfs.insert(surf.get().getName());
+  }
+  return outer_surfs;
+}
+
+void
+CSGBase::defineOpenMCCell(const std::string & cell_name) const
+{
+  // TODO account for cell transformations
+  const auto & csg_cell = _cell_list.getCell(cell_name);
+  const auto & cell_region = csg_cell.getRegion();
+  const bool has_region = !cell_region.toPostfixStringList().empty();
+  Moose::out << cell_name << " = openmc.Cell(";
+  if (csg_cell.getFillType() != "VOID")
+  {
+    Moose::out << "fill=" << csg_cell.getFillName();
+    if (has_region)
+      Moose::out << ", ";
+  }
+  if (has_region)
+    Moose::out << "region=" << toOpenMCRegion(csg_cell.getRegion());
+  Moose::out << ")\n";
+}
+
+void
+CSGBase::replaceAll(std::string & str, const std::string & from, const std::string & to) const
+{
+  if (from.empty())
+    return;
+  size_t start_pos = 0;
+  while ((start_pos = str.find(from, start_pos)) != std::string::npos)
+  {
+    str.replace(start_pos, from.length(), to);
+    start_pos += to.length(); // Move past the replaced string
+  }
+}
+
+std::string
+CSGBase::toOpenMCRegion(const CSGRegion & region) const
+{
+  // TODO reduce number of loops to accomplish this operation
+  auto region_str = region.toInfixJSON().dump();
+
+  // Remove quotation marks and commas from string
+  region_str.erase(std::remove(region_str.begin(), region_str.end(), '"'), region_str.end());
+  region_str.erase(std::remove(region_str.begin(), region_str.end(), ','), region_str.end());
+
+  // Replace square brackets with round brackets
+  std::replace(region_str.begin(), region_str.end(), '[', '(');
+  std::replace(region_str.begin(), region_str.end(), ']', ')');
+
+  // Put spaces around special characters (& and |)
+  replaceAll(region_str, "&", " & ");
+  replaceAll(region_str, "|", " | ");
+
+  return region_str;
+}
+
+void
+CSGBase::defineOpenMCUniverse(const std::string & univ_name) const
+{
+  const auto & csg_univ = _universe_list.getUniverse(univ_name);
+  auto output_univ_name = csg_univ.isRoot() ? "root_universe" : univ_name;
+  const auto & univ_transforms = csg_univ.getTransformations();
+  bool rotated_univ = false;
+  // TODO handle multiple transorms and non-rotation transforms
+  if ((univ_transforms.size()) == 1 && (univ_transforms[0].first == TransformationType::ROTATION))
+    rotated_univ = true;
+
+  if (rotated_univ)
+    output_univ_name += "_unrotated";
+  const auto univ_cells = csg_univ.getAllCells();
+  std::vector<std::string> univ_cell_names;
+
+  for (const auto & univ_cell : univ_cells)
+    univ_cell_names.push_back(univ_cell.get().getName());
+  Moose::out << output_univ_name << " = openmc.Universe(cells=["
+             << Moose::stringify(univ_cell_names) << "])\n";
+
+  if (rotated_univ)
+  {
+    // TODO this assumes a fixed rotation in z-axis
+    const auto target_univ_name = csg_univ.isRoot() ? "root_universe" : univ_name;
+    const auto target_cell_name = target_univ_name + "_cell";
+    Moose::out << target_cell_name << " = openmc.Cell(fill=" << output_univ_name << ")\n";
+    Moose::out << target_cell_name << ".rotation = (0, 0, "
+               << std::get<0>(univ_transforms[0].second) << ")\n";
+    Moose::out << target_univ_name << " = openmc.Universe(cells=[" << target_cell_name << "])\n";
+  }
+}
+
+void
+CSGBase::defineOpenMCLattice(const std::string & lattice_name) const
+{
+  const auto & csg_lattice = _lattice_list.getLattice(lattice_name);
+  const auto & lattice_transforms = csg_lattice.getTransformations();
+  bool rotated_lattice = false;
+  // TODO handle multiple transorms and non-rotation transforms
+  if ((lattice_transforms.size()) == 1 &&
+      (lattice_transforms[0].first == TransformationType::ROTATION))
+    rotated_lattice = true;
+  auto output_lattice_name = lattice_name;
+  if (rotated_lattice)
+    output_lattice_name += "_unrotated";
+
+  const auto lattice_type = csg_lattice.getType();
+  const std::string & lattice_type_str =
+      (lattice_type == "CSG::CSGCartesianLattice") ? "RectLattice" : "HexLattice";
+  std::vector<std::vector<std::string>> universe_names;
+  if (lattice_type_str == "HexLattice")
+  {
+    const auto universe_name_map = csg_lattice.getUniverseNameMap();
+    const auto n_ring = std::get<unsigned int>(csg_lattice.getAttributes()["nring"]);
+    universe_names.resize(n_ring);
+    universe_names[n_ring - 1].resize(1);
+    for (unsigned int i = 0; i < n_ring; ++i)
+    {
+      unsigned int row_size = (i == 0) ? 1 : 6 * i;
+      universe_names[n_ring - i - 1].resize(row_size);
+    }
+    const auto & csg_hex_lattice = dynamic_cast<const CSG::CSGHexagonalLattice &>(csg_lattice);
+    for (unsigned int i = 0; i < universe_name_map.size(); ++i)
+    {
+      for (unsigned int j = 0; j < universe_name_map[i].size(); ++j)
+      {
+        const auto row_index = std::make_pair<int, int>(i, j);
+        const auto ring_index = csg_hex_lattice.getRingIndexFromRowIndex(row_index);
+        universe_names[ring_index.first][ring_index.second] = universe_name_map[i][j];
+      }
+    }
+  }
+  else
+  {
+    const auto n_row = std::get<unsigned int>(csg_lattice.getAttributes()["nrow"]);
+    const auto n_col = std::get<unsigned int>(csg_lattice.getAttributes()["ncol"]);
+    universe_names.resize(n_row);
+    const auto universe_name_map = csg_lattice.getUniverseNameMap();
+    for (unsigned int i = 0; i < n_row; ++i)
+    {
+      universe_names[i].resize(n_col);
+      for (unsigned int j = 0; j < n_col; ++j)
+        universe_names[i][j] = universe_name_map[i][j];
+    }
+  }
+
+  const auto pitch = std::get<Real>(csg_lattice.getAttributes()["pitch"]);
+  const auto outer_type = csg_lattice.getOuterType();
+  std::string outer_univ_name = "";
+  if (outer_type == "UNIVERSE")
+    outer_univ_name = csg_lattice.getOuterUniverse().getName();
+  else if (outer_type == "CSG_MATERIAL")
+  {
+    const auto outer_mat_name = csg_lattice.getOuterMaterial();
+    Moose::out << outer_mat_name << "_cell = openmc.Cell(fill=" << outer_mat_name << ")\n";
+    Moose::out << outer_mat_name << "_univ = openmc.Universe(cells=[" << outer_mat_name
+               << "_cell])\n";
+    outer_univ_name = outer_mat_name + "_univ";
+  }
+
+  Moose::out << output_lattice_name << " = openmc." << lattice_type_str << "()\n";
+  if (lattice_type_str == "HexLattice")
+  {
+    Moose::out << output_lattice_name << ".orientation = 'x'\n";
+    Moose::out << output_lattice_name << ".pitch = (" << pitch << ",)\n";
+    Moose::out << output_lattice_name << ".center = (0, 0)\n";
+  }
+  else
+  {
+    Moose::out << output_lattice_name << ".pitch = (" << pitch << ", " << pitch << ")\n";
+    const auto lower_left_coord_x = -1. * universe_names.size() / 2. * pitch;
+    const auto lower_left_coord_y = -1. * universe_names[0].size() / 2. * pitch;
+    Moose::out << output_lattice_name << ".lower_left = (" << lower_left_coord_x << ", "
+               << lower_left_coord_y << ")\n";
+  }
+  if (!outer_univ_name.empty())
+    Moose::out << output_lattice_name << ".outer = " << outer_univ_name << "\n";
+  Moose::out << output_lattice_name << ".universes = [\n";
+  for (unsigned int i = 0; i < universe_names.size(); ++i)
+  {
+    Moose::out << "  [" << Moose::stringify(universe_names[i]) << "]";
+    if (i != universe_names.size() - 1)
+      Moose::out << ",";
+    Moose::out << "\n";
+  }
+  Moose::out << "]\n";
+
+  if (rotated_lattice)
+  {
+    // TODO this assumes a fixed rotation in z-axis
+    const auto target_univ_name = lattice_name;
+    const auto target_cell_name = target_univ_name + "_cell";
+    Moose::out << target_cell_name << " = openmc.Cell(fill=" << output_lattice_name << ")\n";
+    Moose::out << target_cell_name << ".rotation = (0, 0, "
+               << std::get<0>(lattice_transforms[0].second) << ")\n";
+    Moose::out << target_univ_name << " = openmc.Universe(cells=[" << target_cell_name << "])\n";
+  }
+}
+
+void
+CSGBase::defineOpenMCSurface(const std::string & surf_name, const bool is_outer_boundary) const
+{
+  // TODO account for surface transformations
+  const auto & csg_surf = _surface_list.getSurface(surf_name);
+  const auto & coeffs = csg_surf.getCoeffs();
+  const auto & surf_type = csg_surf.getSurfaceType();
+  // TODO make substr(8) for general
+  Moose::out << surf_name << " = openmc." << surf_type.substr(8) << "(";
+  for (auto it = coeffs.begin(); it != coeffs.end(); ++it)
+  {
+    if (it != coeffs.begin())
+      Moose::out << ", ";
+    Moose::out << it->first << "=" << it->second;
+  }
+  if (is_outer_boundary)
+    Moose::out << ", boundary_type='vacuum'";
+  Moose::out << ")\n";
+}
+
+void
+CSGBase::getLinkedCSGComponents(
+    const CSGUniverse & univ,
+    std::vector<std::pair<std::string, std::string>> & linked_cell_lattice_universe_names,
+    std::set<std::string> & linked_surface_names,
+    std::set<std::string> & linked_material_names) const
+{
+  // TODO define linked_cell_lattice_universe_names in a more generalized way instead of storing
+  // what component type it is as a string
+  // TODO can this method be merged with checkUniverseLinking?
+  linked_cell_lattice_universe_names.insert(linked_cell_lattice_universe_names.begin(),
+                                            std::make_pair(univ.getName(), "universe"));
+  const auto & univ_cells = univ.getAllCells();
+  for (const CSGCell & cell : univ_cells)
+  {
+    const auto cell_surfs = cell.getRegion().getSurfaces();
+    for (const auto & surf : cell_surfs)
+      linked_surface_names.insert(surf.get().getName());
+    linked_cell_lattice_universe_names.insert(linked_cell_lattice_universe_names.begin(),
+                                              std::make_pair(cell.getName(), "cell"));
+    if (cell.getFillType() == "UNIVERSE")
+      getLinkedCSGComponents(cell.getFillUniverse(),
+                             linked_cell_lattice_universe_names,
+                             linked_surface_names,
+                             linked_material_names);
+    else if (cell.getFillType() == "LATTICE")
+    {
+      const auto & lattice = cell.getFillLattice();
+      linked_cell_lattice_universe_names.insert(linked_cell_lattice_universe_names.begin(),
+                                                std::make_pair(lattice.getName(), "lattice"));
+      for (const auto & univ_list : lattice.getUniverses())
+        for (const auto & univ_ref : univ_list)
+        {
+          const CSGUniverse & lattice_univ = univ_ref.get();
+          getLinkedCSGComponents(lattice_univ,
+                                 linked_cell_lattice_universe_names,
+                                 linked_surface_names,
+                                 linked_material_names);
+        }
+
+      if (lattice.getOuterType() == "UNIVERSE")
+      {
+        const CSGUniverse & outer_univ = lattice.getOuterUniverse();
+        getLinkedCSGComponents(outer_univ,
+                               linked_cell_lattice_universe_names,
+                               linked_surface_names,
+                               linked_material_names);
+      }
+      else if (lattice.getOuterType() == "CSG_MATERIAL")
+        linked_material_names.insert(lattice.getOuterMaterial());
+    }
+    else if (cell.getFillType() == "CSG_MATERIAL")
+      linked_material_names.insert(cell.getFillMaterial());
+  }
 }
 
 bool

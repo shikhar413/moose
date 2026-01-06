@@ -770,6 +770,8 @@ public:
    */
   nlohmann::json generateOutput() const;
 
+  void generateOpenMCOutput(const std::string & file_base) const;
+
   /// Operator overload for checking if two CSGBase objects are equal
   bool operator==(const CSGBase & other) const;
 
@@ -957,6 +959,20 @@ private:
                           std::set<std::string> & linked_universe_names,
                           std::set<std::string> & linked_cell_names,
                           std::set<std::string> & linked_surface_names) const;
+
+  void getLinkedCSGComponents(
+      const CSGUniverse & univ,
+      std::vector<std::pair<std::string, std::string>> & linked_cell_lattice_universe_names,
+      std::set<std::string> & linked_surface_names,
+      std::set<std::string> & linked_material_names) const;
+
+  void defineOpenMCCell(const std::string & surf_name) const;
+  void defineOpenMCUniverse(const std::string & univ_name) const;
+  void defineOpenMCLattice(const std::string & lattice_name) const;
+  void defineOpenMCSurface(const std::string & surf_name, const bool is_outer_boundary) const;
+  std::string toOpenMCRegion(const CSGRegion & region) const;
+  void replaceAll(std::string & str, const std::string & from, const std::string & to) const;
+  std::set<std::string> getOuterBoundarySurfs() const;
 
   /**
    * @brief Get a const reference to the CSGSurfaceList object

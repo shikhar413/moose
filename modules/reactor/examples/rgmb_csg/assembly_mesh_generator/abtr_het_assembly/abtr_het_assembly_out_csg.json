@@ -6,66 +6,66 @@
       "region_infix": [
         "~",
         [
-          "+fuel_assembly_1_radial_duct_0_surf_0",
+          "-fuel_assembly_1_radial_duct_0_expanded_surf_0",
           "&",
-          "+fuel_assembly_1_radial_duct_0_surf_1",
+          "-fuel_assembly_1_radial_duct_0_expanded_surf_1",
           "&",
-          "+fuel_assembly_1_radial_duct_0_surf_2",
+          "-fuel_assembly_1_radial_duct_0_expanded_surf_2",
           "&",
-          "+fuel_assembly_1_radial_duct_0_surf_3",
+          "-fuel_assembly_1_radial_duct_0_expanded_surf_3",
           "&",
-          "+fuel_assembly_1_radial_duct_0_surf_4",
+          "-fuel_assembly_1_radial_duct_0_expanded_surf_4",
           "&",
-          "+fuel_assembly_1_radial_duct_0_surf_5"
+          "-fuel_assembly_1_radial_duct_0_expanded_surf_5"
         ],
         "&",
-        "+fuel_assembly_1_radial_duct_1_surf_0",
+        "-fuel_assembly_1_radial_duct_1_expanded_surf_0",
         "&",
-        "+fuel_assembly_1_radial_duct_1_surf_1",
+        "-fuel_assembly_1_radial_duct_1_expanded_surf_1",
         "&",
-        "+fuel_assembly_1_radial_duct_1_surf_2",
+        "-fuel_assembly_1_radial_duct_1_expanded_surf_2",
         "&",
-        "+fuel_assembly_1_radial_duct_1_surf_3",
+        "-fuel_assembly_1_radial_duct_1_expanded_surf_3",
         "&",
-        "+fuel_assembly_1_radial_duct_1_surf_4",
+        "-fuel_assembly_1_radial_duct_1_expanded_surf_4",
         "&",
-        "+fuel_assembly_1_radial_duct_1_surf_5"
+        "-fuel_assembly_1_radial_duct_1_expanded_surf_5"
       ],
       "region_postfix": [
-        "fuel_assembly_1_radial_duct_0_surf_0",
-        "+",
-        "fuel_assembly_1_radial_duct_0_surf_1",
-        "+",
+        "fuel_assembly_1_radial_duct_0_expanded_surf_0",
+        "-",
+        "fuel_assembly_1_radial_duct_0_expanded_surf_1",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_0_surf_2",
-        "+",
+        "fuel_assembly_1_radial_duct_0_expanded_surf_2",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_0_surf_3",
-        "+",
+        "fuel_assembly_1_radial_duct_0_expanded_surf_3",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_0_surf_4",
-        "+",
+        "fuel_assembly_1_radial_duct_0_expanded_surf_4",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_0_surf_5",
-        "+",
+        "fuel_assembly_1_radial_duct_0_expanded_surf_5",
+        "-",
         "&",
         "~",
-        "fuel_assembly_1_radial_duct_1_surf_0",
-        "+",
-        "fuel_assembly_1_radial_duct_1_surf_1",
-        "+",
+        "fuel_assembly_1_radial_duct_1_expanded_surf_0",
+        "-",
+        "fuel_assembly_1_radial_duct_1_expanded_surf_1",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_1_surf_2",
-        "+",
+        "fuel_assembly_1_radial_duct_1_expanded_surf_2",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_1_surf_3",
-        "+",
+        "fuel_assembly_1_radial_duct_1_expanded_surf_3",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_1_surf_4",
-        "+",
+        "fuel_assembly_1_radial_duct_1_expanded_surf_4",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_1_surf_5",
-        "+",
+        "fuel_assembly_1_radial_duct_1_expanded_surf_5",
+        "-",
         "&",
         "&"
       ]
@@ -76,36 +76,36 @@
       "region_infix": [
         "~",
         [
-          "+fuel_assembly_1_radial_duct_1_surf_0",
+          "-fuel_assembly_1_radial_duct_1_expanded_surf_0",
           "&",
-          "+fuel_assembly_1_radial_duct_1_surf_1",
+          "-fuel_assembly_1_radial_duct_1_expanded_surf_1",
           "&",
-          "+fuel_assembly_1_radial_duct_1_surf_2",
+          "-fuel_assembly_1_radial_duct_1_expanded_surf_2",
           "&",
-          "+fuel_assembly_1_radial_duct_1_surf_3",
+          "-fuel_assembly_1_radial_duct_1_expanded_surf_3",
           "&",
-          "+fuel_assembly_1_radial_duct_1_surf_4",
+          "-fuel_assembly_1_radial_duct_1_expanded_surf_4",
           "&",
-          "+fuel_assembly_1_radial_duct_1_surf_5"
+          "-fuel_assembly_1_radial_duct_1_expanded_surf_5"
         ]
       ],
       "region_postfix": [
-        "fuel_assembly_1_radial_duct_1_surf_0",
-        "+",
-        "fuel_assembly_1_radial_duct_1_surf_1",
-        "+",
+        "fuel_assembly_1_radial_duct_1_expanded_surf_0",
+        "-",
+        "fuel_assembly_1_radial_duct_1_expanded_surf_1",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_1_surf_2",
-        "+",
+        "fuel_assembly_1_radial_duct_1_expanded_surf_2",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_1_surf_3",
-        "+",
+        "fuel_assembly_1_radial_duct_1_expanded_surf_3",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_1_surf_4",
-        "+",
+        "fuel_assembly_1_radial_duct_1_expanded_surf_4",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_1_surf_5",
-        "+",
+        "fuel_assembly_1_radial_duct_1_expanded_surf_5",
+        "-",
         "&",
         "~"
       ]
@@ -114,10 +114,10 @@
       "fill": "rgmb_region_9",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
-        "-rgmb_axial_plane_1"
+        "-rgmb_axial_plane_0"
       ],
       "region_postfix": [
-        "rgmb_axial_plane_1",
+        "rgmb_axial_plane_0",
         "-"
       ]
     },
@@ -125,14 +125,14 @@
       "fill": "rgmb_region_5",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
-        "+rgmb_axial_plane_1",
+        "+rgmb_axial_plane_0",
         "&",
-        "-rgmb_axial_plane_2"
+        "-rgmb_axial_plane_1"
       ],
       "region_postfix": [
-        "rgmb_axial_plane_1",
+        "rgmb_axial_plane_0",
         "+",
-        "rgmb_axial_plane_2",
+        "rgmb_axial_plane_1",
         "-",
         "&"
       ]
@@ -141,14 +141,14 @@
       "fill": "rgmb_region_10",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
-        "+rgmb_axial_plane_2",
+        "+rgmb_axial_plane_1",
         "&",
-        "-rgmb_axial_plane_3"
+        "-rgmb_axial_plane_2"
       ],
       "region_postfix": [
-        "rgmb_axial_plane_2",
+        "rgmb_axial_plane_1",
         "+",
-        "rgmb_axial_plane_3",
+        "rgmb_axial_plane_2",
         "-",
         "&"
       ]
@@ -157,10 +157,10 @@
       "fill": "rgmb_region_11",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
-        "+rgmb_axial_plane_3"
+        "+rgmb_axial_plane_2"
       ],
       "region_postfix": [
-        "rgmb_axial_plane_3",
+        "rgmb_axial_plane_2",
         "+"
       ]
     },
@@ -168,10 +168,10 @@
       "fill": "rgmb_region_9",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
-        "-rgmb_axial_plane_1"
+        "-rgmb_axial_plane_0"
       ],
       "region_postfix": [
-        "rgmb_axial_plane_1",
+        "rgmb_axial_plane_0",
         "-"
       ]
     },
@@ -179,14 +179,14 @@
       "fill": "rgmb_region_6",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
-        "+rgmb_axial_plane_1",
+        "+rgmb_axial_plane_0",
         "&",
-        "-rgmb_axial_plane_2"
+        "-rgmb_axial_plane_1"
       ],
       "region_postfix": [
-        "rgmb_axial_plane_1",
+        "rgmb_axial_plane_0",
         "+",
-        "rgmb_axial_plane_2",
+        "rgmb_axial_plane_1",
         "-",
         "&"
       ]
@@ -195,14 +195,14 @@
       "fill": "rgmb_region_10",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
-        "+rgmb_axial_plane_2",
+        "+rgmb_axial_plane_1",
         "&",
-        "-rgmb_axial_plane_3"
+        "-rgmb_axial_plane_2"
       ],
       "region_postfix": [
-        "rgmb_axial_plane_2",
+        "rgmb_axial_plane_1",
         "+",
-        "rgmb_axial_plane_3",
+        "rgmb_axial_plane_2",
         "-",
         "&"
       ]
@@ -211,10 +211,10 @@
       "fill": "rgmb_region_11",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
-        "+rgmb_axial_plane_3"
+        "+rgmb_axial_plane_2"
       ],
       "region_postfix": [
-        "rgmb_axial_plane_3",
+        "rgmb_axial_plane_2",
         "+"
       ]
     },
@@ -222,35 +222,35 @@
       "fill": "fuel_assembly_1_lattice",
       "filltype": "LATTICE",
       "region_infix": [
-        "+fuel_assembly_1_radial_duct_0_surf_0",
+        "-fuel_assembly_1_radial_duct_0_expanded_surf_0",
         "&",
-        "+fuel_assembly_1_radial_duct_0_surf_1",
+        "-fuel_assembly_1_radial_duct_0_expanded_surf_1",
         "&",
-        "+fuel_assembly_1_radial_duct_0_surf_2",
+        "-fuel_assembly_1_radial_duct_0_expanded_surf_2",
         "&",
-        "+fuel_assembly_1_radial_duct_0_surf_3",
+        "-fuel_assembly_1_radial_duct_0_expanded_surf_3",
         "&",
-        "+fuel_assembly_1_radial_duct_0_surf_4",
+        "-fuel_assembly_1_radial_duct_0_expanded_surf_4",
         "&",
-        "+fuel_assembly_1_radial_duct_0_surf_5"
+        "-fuel_assembly_1_radial_duct_0_expanded_surf_5"
       ],
       "region_postfix": [
-        "fuel_assembly_1_radial_duct_0_surf_0",
-        "+",
-        "fuel_assembly_1_radial_duct_0_surf_1",
-        "+",
+        "fuel_assembly_1_radial_duct_0_expanded_surf_0",
+        "-",
+        "fuel_assembly_1_radial_duct_0_expanded_surf_1",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_0_surf_2",
-        "+",
+        "fuel_assembly_1_radial_duct_0_expanded_surf_2",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_0_surf_3",
-        "+",
+        "fuel_assembly_1_radial_duct_0_expanded_surf_3",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_0_surf_4",
-        "+",
+        "fuel_assembly_1_radial_duct_0_expanded_surf_4",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_0_surf_5",
-        "+",
+        "fuel_assembly_1_radial_duct_0_expanded_surf_5",
+        "-",
         "&"
       ]
     },
@@ -258,10 +258,10 @@
       "fill": "rgmb_region_9",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
-        "-rgmb_axial_plane_1"
+        "-rgmb_axial_plane_0"
       ],
       "region_postfix": [
-        "rgmb_axial_plane_1",
+        "rgmb_axial_plane_0",
         "-"
       ]
     },
@@ -269,14 +269,14 @@
       "fill": "rgmb_region_6",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
-        "+rgmb_axial_plane_1",
+        "+rgmb_axial_plane_0",
         "&",
-        "-rgmb_axial_plane_2"
+        "-rgmb_axial_plane_1"
       ],
       "region_postfix": [
-        "rgmb_axial_plane_1",
+        "rgmb_axial_plane_0",
         "+",
-        "rgmb_axial_plane_2",
+        "rgmb_axial_plane_1",
         "-",
         "&"
       ]
@@ -285,14 +285,14 @@
       "fill": "rgmb_region_10",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
-        "+rgmb_axial_plane_2",
+        "+rgmb_axial_plane_1",
         "&",
-        "-rgmb_axial_plane_3"
+        "-rgmb_axial_plane_2"
       ],
       "region_postfix": [
-        "rgmb_axial_plane_2",
+        "rgmb_axial_plane_1",
         "+",
-        "rgmb_axial_plane_3",
+        "rgmb_axial_plane_2",
         "-",
         "&"
       ]
@@ -301,10 +301,10 @@
       "fill": "rgmb_region_11",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
-        "+rgmb_axial_plane_3"
+        "+rgmb_axial_plane_2"
       ],
       "region_postfix": [
-        "rgmb_axial_plane_3",
+        "rgmb_axial_plane_2",
         "+"
       ]
     },
@@ -312,320 +312,284 @@
       "fill": "fuel_assembly_1_univ",
       "filltype": "UNIVERSE",
       "region_infix": [
-        "+fuel_assembly_1_radial_duct_2_surf_0",
+        "-fuel_assembly_1_radial_boundary_expanded_surf_0",
         "&",
-        "+fuel_assembly_1_radial_duct_2_surf_1",
+        "-fuel_assembly_1_radial_boundary_expanded_surf_1",
         "&",
-        "+fuel_assembly_1_radial_duct_2_surf_2",
+        "-fuel_assembly_1_radial_boundary_expanded_surf_2",
         "&",
-        "+fuel_assembly_1_radial_duct_2_surf_3",
+        "-fuel_assembly_1_radial_boundary_expanded_surf_3",
         "&",
-        "+fuel_assembly_1_radial_duct_2_surf_4",
+        "-fuel_assembly_1_radial_boundary_expanded_surf_4",
         "&",
-        "+fuel_assembly_1_radial_duct_2_surf_5",
+        "-fuel_assembly_1_radial_boundary_expanded_surf_5",
         "&",
-        "+rgmb_axial_plane_0",
+        "+rgmb_axial_plane_bottom_boundary",
         "&",
-        "-rgmb_axial_plane_4"
+        "-rgmb_axial_plane_top_boundary"
       ],
       "region_postfix": [
-        "fuel_assembly_1_radial_duct_2_surf_0",
-        "+",
-        "fuel_assembly_1_radial_duct_2_surf_1",
-        "+",
+        "fuel_assembly_1_radial_boundary_expanded_surf_0",
+        "-",
+        "fuel_assembly_1_radial_boundary_expanded_surf_1",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_2_surf_2",
-        "+",
+        "fuel_assembly_1_radial_boundary_expanded_surf_2",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_2_surf_3",
-        "+",
+        "fuel_assembly_1_radial_boundary_expanded_surf_3",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_2_surf_4",
-        "+",
+        "fuel_assembly_1_radial_boundary_expanded_surf_4",
+        "-",
         "&",
-        "fuel_assembly_1_radial_duct_2_surf_5",
-        "+",
+        "fuel_assembly_1_radial_boundary_expanded_surf_5",
+        "-",
         "&",
-        "rgmb_axial_plane_0",
+        "rgmb_axial_plane_bottom_boundary",
         "+",
-        "rgmb_axial_plane_4",
+        "rgmb_axial_plane_top_boundary",
         "-",
         "&",
         "&"
       ]
     },
-    "fuel_pin_1_cell_radial_0_axial_0": {
+    "fuel_pin_1_ducted_pin_unit_cell_radial_0_axial_0": {
+      "fill": "fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_expanded_root",
+      "filltype": "UNIVERSE",
+      "region_infix": [
+        "-rgmb_axial_plane_0"
+      ],
+      "region_postfix": [
+        "rgmb_axial_plane_0",
+        "-"
+      ]
+    },
+    "fuel_pin_1_ducted_pin_unit_cell_radial_0_axial_1": {
+      "fill": "fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_expanded_root",
+      "filltype": "UNIVERSE",
+      "region_infix": [
+        "-rgmb_axial_plane_1",
+        "&",
+        "+rgmb_axial_plane_0"
+      ],
+      "region_postfix": [
+        "rgmb_axial_plane_1",
+        "-",
+        "rgmb_axial_plane_0",
+        "+",
+        "&"
+      ]
+    },
+    "fuel_pin_1_ducted_pin_unit_cell_radial_0_axial_2": {
+      "fill": "fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_expanded_root",
+      "filltype": "UNIVERSE",
+      "region_infix": [
+        "-rgmb_axial_plane_2",
+        "&",
+        "+rgmb_axial_plane_1"
+      ],
+      "region_postfix": [
+        "rgmb_axial_plane_2",
+        "-",
+        "rgmb_axial_plane_1",
+        "+",
+        "&"
+      ]
+    },
+    "fuel_pin_1_ducted_pin_unit_cell_radial_0_axial_3": {
+      "fill": "fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_expanded_root",
+      "filltype": "UNIVERSE",
+      "region_infix": [
+        "+rgmb_axial_plane_2"
+      ],
+      "region_postfix": [
+        "rgmb_axial_plane_2",
+        "+"
+      ]
+    },
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_cell_radial_0": {
       "fill": "rgmb_region_9",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
-        "-fuel_pin_1_radial_ring_0",
-        "&",
-        "-rgmb_axial_plane_1"
+        "-fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_radial_ring_0"
       ],
       "region_postfix": [
-        "fuel_pin_1_radial_ring_0",
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_radial_ring_0",
+        "-"
+      ]
+    },
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_cell_radial_1": {
+      "fill": "rgmb_region_9",
+      "filltype": "CSG_MATERIAL",
+      "region_infix": [
+        "-fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_radial_ring_1",
+        "&",
+        "~",
+        [
+          "-fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_radial_ring_0"
+        ]
+      ],
+      "region_postfix": [
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_radial_ring_1",
         "-",
-        "rgmb_axial_plane_1",
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_radial_ring_0",
         "-",
+        "~",
         "&"
       ]
     },
-    "fuel_pin_1_cell_radial_0_axial_1": {
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_cell_radial_2": {
+      "fill": "rgmb_region_9",
+      "filltype": "CSG_MATERIAL",
+      "region_infix": [
+        "~",
+        [
+          "-fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_radial_ring_1"
+        ]
+      ],
+      "region_postfix": [
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_radial_ring_1",
+        "-",
+        "~"
+      ]
+    },
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_cell_radial_0": {
       "fill": "rgmb_region_1",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
-        "-fuel_pin_1_radial_ring_0",
-        "&",
-        "+rgmb_axial_plane_1",
-        "&",
-        "-rgmb_axial_plane_2"
+        "-fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_radial_ring_0"
       ],
       "region_postfix": [
-        "fuel_pin_1_radial_ring_0",
-        "-",
-        "rgmb_axial_plane_1",
-        "+",
-        "rgmb_axial_plane_2",
-        "-",
-        "&",
-        "&"
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_radial_ring_0",
+        "-"
       ]
     },
-    "fuel_pin_1_cell_radial_0_axial_2": {
-      "fill": "rgmb_region_10",
-      "filltype": "CSG_MATERIAL",
-      "region_infix": [
-        "-fuel_pin_1_radial_ring_0",
-        "&",
-        "+rgmb_axial_plane_2",
-        "&",
-        "-rgmb_axial_plane_3"
-      ],
-      "region_postfix": [
-        "fuel_pin_1_radial_ring_0",
-        "-",
-        "rgmb_axial_plane_2",
-        "+",
-        "rgmb_axial_plane_3",
-        "-",
-        "&",
-        "&"
-      ]
-    },
-    "fuel_pin_1_cell_radial_0_axial_3": {
-      "fill": "rgmb_region_11",
-      "filltype": "CSG_MATERIAL",
-      "region_infix": [
-        "-fuel_pin_1_radial_ring_0",
-        "&",
-        "+rgmb_axial_plane_3"
-      ],
-      "region_postfix": [
-        "fuel_pin_1_radial_ring_0",
-        "-",
-        "rgmb_axial_plane_3",
-        "+",
-        "&"
-      ]
-    },
-    "fuel_pin_1_cell_radial_1_axial_0": {
-      "fill": "rgmb_region_9",
-      "filltype": "CSG_MATERIAL",
-      "region_infix": [
-        "-fuel_pin_1_radial_ring_1",
-        "&",
-        "~",
-        [
-          "-fuel_pin_1_radial_ring_0"
-        ],
-        "&",
-        "-rgmb_axial_plane_1"
-      ],
-      "region_postfix": [
-        "fuel_pin_1_radial_ring_1",
-        "-",
-        "fuel_pin_1_radial_ring_0",
-        "-",
-        "~",
-        "&",
-        "rgmb_axial_plane_1",
-        "-",
-        "&"
-      ]
-    },
-    "fuel_pin_1_cell_radial_1_axial_1": {
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_cell_radial_1": {
       "fill": "rgmb_region_5",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
-        "-fuel_pin_1_radial_ring_1",
+        "-fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_radial_ring_1",
         "&",
         "~",
         [
-          "-fuel_pin_1_radial_ring_0"
-        ],
-        "&",
-        "+rgmb_axial_plane_1",
-        "&",
-        "-rgmb_axial_plane_2"
+          "-fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_radial_ring_0"
+        ]
       ],
       "region_postfix": [
-        "fuel_pin_1_radial_ring_1",
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_radial_ring_1",
         "-",
-        "fuel_pin_1_radial_ring_0",
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_radial_ring_0",
         "-",
         "~",
-        "&",
-        "rgmb_axial_plane_1",
-        "+",
-        "rgmb_axial_plane_2",
-        "-",
-        "&",
         "&"
       ]
     },
-    "fuel_pin_1_cell_radial_1_axial_2": {
-      "fill": "rgmb_region_10",
-      "filltype": "CSG_MATERIAL",
-      "region_infix": [
-        "-fuel_pin_1_radial_ring_1",
-        "&",
-        "~",
-        [
-          "-fuel_pin_1_radial_ring_0"
-        ],
-        "&",
-        "+rgmb_axial_plane_2",
-        "&",
-        "-rgmb_axial_plane_3"
-      ],
-      "region_postfix": [
-        "fuel_pin_1_radial_ring_1",
-        "-",
-        "fuel_pin_1_radial_ring_0",
-        "-",
-        "~",
-        "&",
-        "rgmb_axial_plane_2",
-        "+",
-        "rgmb_axial_plane_3",
-        "-",
-        "&",
-        "&"
-      ]
-    },
-    "fuel_pin_1_cell_radial_1_axial_3": {
-      "fill": "rgmb_region_11",
-      "filltype": "CSG_MATERIAL",
-      "region_infix": [
-        "-fuel_pin_1_radial_ring_1",
-        "&",
-        "~",
-        [
-          "-fuel_pin_1_radial_ring_0"
-        ],
-        "&",
-        "+rgmb_axial_plane_3"
-      ],
-      "region_postfix": [
-        "fuel_pin_1_radial_ring_1",
-        "-",
-        "fuel_pin_1_radial_ring_0",
-        "-",
-        "~",
-        "&",
-        "rgmb_axial_plane_3",
-        "+",
-        "&"
-      ]
-    },
-    "fuel_pin_1_cell_radial_2_axial_0": {
-      "fill": "rgmb_region_9",
-      "filltype": "CSG_MATERIAL",
-      "region_infix": [
-        "~",
-        [
-          "-fuel_pin_1_radial_ring_1"
-        ],
-        "&",
-        "-rgmb_axial_plane_1"
-      ],
-      "region_postfix": [
-        "fuel_pin_1_radial_ring_1",
-        "-",
-        "~",
-        "rgmb_axial_plane_1",
-        "-",
-        "&"
-      ]
-    },
-    "fuel_pin_1_cell_radial_2_axial_1": {
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_cell_radial_2": {
       "fill": "rgmb_region_6",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
         "~",
         [
-          "-fuel_pin_1_radial_ring_1"
-        ],
-        "&",
-        "+rgmb_axial_plane_1",
-        "&",
-        "-rgmb_axial_plane_2"
+          "-fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_radial_ring_1"
+        ]
       ],
       "region_postfix": [
-        "fuel_pin_1_radial_ring_1",
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_radial_ring_1",
+        "-",
+        "~"
+      ]
+    },
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_cell_radial_0": {
+      "fill": "rgmb_region_10",
+      "filltype": "CSG_MATERIAL",
+      "region_infix": [
+        "-fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_radial_ring_0"
+      ],
+      "region_postfix": [
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_radial_ring_0",
+        "-"
+      ]
+    },
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_cell_radial_1": {
+      "fill": "rgmb_region_10",
+      "filltype": "CSG_MATERIAL",
+      "region_infix": [
+        "-fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_radial_ring_1",
+        "&",
+        "~",
+        [
+          "-fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_radial_ring_0"
+        ]
+      ],
+      "region_postfix": [
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_radial_ring_1",
+        "-",
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_radial_ring_0",
         "-",
         "~",
-        "rgmb_axial_plane_1",
-        "+",
-        "rgmb_axial_plane_2",
-        "-",
-        "&",
         "&"
       ]
     },
-    "fuel_pin_1_cell_radial_2_axial_2": {
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_cell_radial_2": {
       "fill": "rgmb_region_10",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
         "~",
         [
-          "-fuel_pin_1_radial_ring_1"
-        ],
-        "&",
-        "+rgmb_axial_plane_2",
-        "&",
-        "-rgmb_axial_plane_3"
+          "-fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_radial_ring_1"
+        ]
       ],
       "region_postfix": [
-        "fuel_pin_1_radial_ring_1",
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_radial_ring_1",
+        "-",
+        "~"
+      ]
+    },
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_cell_radial_0": {
+      "fill": "rgmb_region_11",
+      "filltype": "CSG_MATERIAL",
+      "region_infix": [
+        "-fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_radial_ring_0"
+      ],
+      "region_postfix": [
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_radial_ring_0",
+        "-"
+      ]
+    },
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_cell_radial_1": {
+      "fill": "rgmb_region_11",
+      "filltype": "CSG_MATERIAL",
+      "region_infix": [
+        "-fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_radial_ring_1",
+        "&",
+        "~",
+        [
+          "-fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_radial_ring_0"
+        ]
+      ],
+      "region_postfix": [
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_radial_ring_1",
+        "-",
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_radial_ring_0",
         "-",
         "~",
-        "rgmb_axial_plane_2",
-        "+",
-        "rgmb_axial_plane_3",
-        "-",
-        "&",
         "&"
       ]
     },
-    "fuel_pin_1_cell_radial_2_axial_3": {
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_cell_radial_2": {
       "fill": "rgmb_region_11",
       "filltype": "CSG_MATERIAL",
       "region_infix": [
         "~",
         [
-          "-fuel_pin_1_radial_ring_1"
-        ],
-        "&",
-        "+rgmb_axial_plane_3"
+          "-fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_radial_ring_1"
+        ]
       ],
       "region_postfix": [
-        "fuel_pin_1_radial_ring_1",
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_radial_ring_1",
         "-",
-        "~",
-        "rgmb_axial_plane_3",
-        "+",
-        "&"
+        "~"
       ]
     }
   },
@@ -651,477 +615,423 @@
       "type": "CSG::CSGHexagonalLattice",
       "universes": [
         [
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ"
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root"
         ],
         [
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ"
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root"
         ],
         [
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ"
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root"
         ],
         [
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ"
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root"
         ],
         [
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ"
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root"
         ],
         [
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ"
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root"
         ],
         [
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ"
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root"
         ],
         [
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ"
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root"
         ],
         [
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ"
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root"
         ],
         [
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ"
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root"
         ],
         [
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ"
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root"
         ],
         [
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ"
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root"
         ],
         [
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ"
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root"
         ],
         [
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ"
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root"
         ],
         [
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ"
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root"
         ],
         [
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ"
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root"
         ],
         [
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ",
-          "fuel_pin_1_univ"
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root",
+          "fuel_pin_1_ducted_pin_unit_expanded_root"
         ]
       ]
     }
   },
   "surfaces": {
-    "fuel_assembly_1_radial_duct_0_surf_0": {
-      "coefficients": {
-        "a": -0.5000000000000001,
-        "b": -0.8660254037844386,
-        "c": 3.1630468469724177e-18,
-        "d": -6.7989999999999995
-      },
-      "type": "CSG::CSGPlane"
-    },
-    "fuel_assembly_1_radial_duct_0_surf_1": {
-      "coefficients": {
-        "a": 0.4999999999999998,
-        "b": -0.8660254037844387,
-        "c": 4.90345121972478e-18,
-        "d": -6.799000000000001
-      },
-      "type": "CSG::CSGPlane"
-    },
-    "fuel_assembly_1_radial_duct_0_surf_2": {
+    "fuel_assembly_1_radial_boundary_expanded_surf_0": {
       "coefficients": {
         "a": 1.0,
-        "b": -3.393962676364578e-16,
-        "c": -1.4802973661668757e-17,
-        "d": -6.7989999999999995
+        "b": 0.0,
+        "c": 0.0,
+        "d": 7.299
       },
       "type": "CSG::CSGPlane"
     },
-    "fuel_assembly_1_radial_duct_0_surf_3": {
+    "fuel_assembly_1_radial_boundary_expanded_surf_1": {
       "coefficients": {
-        "a": 0.5000000000000003,
+        "a": 0.5000000000000001,
         "b": 0.8660254037844386,
-        "c": -9.823014552428728e-19,
-        "d": -6.799000000000001
+        "c": 0.0,
+        "d": 7.299
       },
       "type": "CSG::CSGPlane"
     },
-    "fuel_assembly_1_radial_duct_0_surf_4": {
+    "fuel_assembly_1_radial_boundary_expanded_surf_2": {
       "coefficients": {
-        "a": -0.49999999999999967,
+        "a": -0.49999999999999983,
         "b": 0.8660254037844387,
-        "c": -7.916300022832314e-18,
-        "d": -6.799
-      },
-      "type": "CSG::CSGPlane"
-    },
-    "fuel_assembly_1_radial_duct_0_surf_5": {
-      "coefficients": {
-        "a": -1.0,
-        "b": 6.787925352729159e-16,
-        "c": 6.698765347588221e-33,
-        "d": -6.799
-      },
-      "type": "CSG::CSGPlane"
-    },
-    "fuel_assembly_1_radial_duct_1_surf_0": {
-      "coefficients": {
-        "a": -0.5000000000000002,
-        "b": -0.8660254037844387,
-        "c": -1.7218429845536919e-18,
-        "d": -7.099000000000001
-      },
-      "type": "CSG::CSGPlane"
-    },
-    "fuel_assembly_1_radial_duct_1_surf_1": {
-      "coefficients": {
-        "a": 0.4999999999999997,
-        "b": -0.8660254037844387,
-        "c": -6.394761678658844e-18,
-        "d": -7.099
-      },
-      "type": "CSG::CSGPlane"
-    },
-    "fuel_assembly_1_radial_duct_1_surf_2": {
-      "coefficients": {
-        "a": 1.0,
-        "b": -3.250535601718941e-16,
-        "c": 1.4802973661668754e-17,
-        "d": -7.098999999999999
-      },
-      "type": "CSG::CSGPlane"
-    },
-    "fuel_assembly_1_radial_duct_1_surf_3": {
-      "coefficients": {
-        "a": 0.5000000000000002,
-        "b": 0.8660254037844385,
-        "c": -1.454159422711078e-17,
-        "d": -7.099
-      },
-      "type": "CSG::CSGPlane"
-    },
-    "fuel_assembly_1_radial_duct_1_surf_4": {
-      "coefficients": {
-        "a": -0.4999999999999997,
-        "b": 0.8660254037844388,
-        "c": 2.455724423577013e-18,
-        "d": -7.099
-      },
-      "type": "CSG::CSGPlane"
-    },
-    "fuel_assembly_1_radial_duct_1_surf_5": {
-      "coefficients": {
-        "a": -1.0,
-        "b": 6.501071203437884e-16,
         "c": 0.0,
-        "d": -7.099
+        "d": 7.299
       },
       "type": "CSG::CSGPlane"
     },
-    "fuel_assembly_1_radial_duct_2_surf_0": {
-      "coefficients": {
-        "a": -0.5000000000000001,
-        "b": -0.8660254037844386,
-        "c": -1.5434583128856623e-17,
-        "d": -7.299
-      },
-      "type": "CSG::CSGPlane"
-    },
-    "fuel_assembly_1_radial_duct_2_surf_1": {
-      "coefficients": {
-        "a": 0.4999999999999998,
-        "b": -0.8660254037844387,
-        "c": -2.216945780076002e-17,
-        "d": -7.299000000000001
-      },
-      "type": "CSG::CSGPlane"
-    },
-    "fuel_assembly_1_radial_duct_2_surf_2": {
-      "coefficients": {
-        "a": 1.0,
-        "b": -3.161467630716915e-16,
-        "c": 1.4802973661668754e-17,
-        "d": -7.299
-      },
-      "type": "CSG::CSGPlane"
-    },
-    "fuel_assembly_1_radial_duct_2_surf_3": {
-      "coefficients": {
-        "a": 0.5000000000000002,
-        "b": 0.8660254037844386,
-        "c": -1.5239987615224594e-19,
-        "d": -7.299
-      },
-      "type": "CSG::CSGPlane"
-    },
-    "fuel_assembly_1_radial_duct_2_surf_4": {
-      "coefficients": {
-        "a": -0.4999999999999998,
-        "b": 0.8660254037844389,
-        "c": -6.88727454805564e-18,
-        "d": -7.299000000000002
-      },
-      "type": "CSG::CSGPlane"
-    },
-    "fuel_assembly_1_radial_duct_2_surf_5": {
+    "fuel_assembly_1_radial_boundary_expanded_surf_3": {
       "coefficients": {
         "a": -1.0,
-        "b": 6.322935261433833e-16,
+        "b": 1.2246467991473532e-16,
         "c": 0.0,
-        "d": -7.299000000000001
+        "d": 7.299
       },
       "type": "CSG::CSGPlane"
     },
-    "fuel_pin_1_radial_duct_2_surf_0": {
+    "fuel_assembly_1_radial_boundary_expanded_surf_4": {
       "coefficients": {
-        "a": -0.5000000000000001,
+        "a": -0.5000000000000004,
+        "b": -0.8660254037844384,
+        "c": 0.0,
+        "d": 7.299
+      },
+      "type": "CSG::CSGPlane"
+    },
+    "fuel_assembly_1_radial_boundary_expanded_surf_5": {
+      "coefficients": {
+        "a": 0.5000000000000001,
         "b": -0.8660254037844386,
-        "c": 9.016854777994877e-19,
-        "d": -0.454
+        "c": 0.0,
+        "d": 7.299
       },
       "type": "CSG::CSGPlane"
     },
-    "fuel_pin_1_radial_duct_2_surf_1": {
-      "coefficients": {
-        "a": 0.4999999999999998,
-        "b": -0.8660254037844388,
-        "c": 2.8407617409334307e-19,
-        "d": -0.45400000000000007
-      },
-      "type": "CSG::CSGPlane"
-    },
-    "fuel_pin_1_radial_duct_2_surf_2": {
+    "fuel_assembly_1_radial_duct_0_expanded_surf_0": {
       "coefficients": {
         "a": 1.0,
-        "b": -3.1767004731006013e-16,
-        "c": -9.251858538542971e-19,
-        "d": -0.454
+        "b": 0.0,
+        "c": 0.0,
+        "d": 6.799
       },
       "type": "CSG::CSGPlane"
     },
-    "fuel_pin_1_radial_duct_2_surf_3": {
+    "fuel_assembly_1_radial_duct_0_expanded_surf_1": {
       "coefficients": {
-        "a": 0.5000000000000002,
+        "a": 0.5000000000000001,
         "b": 0.8660254037844386,
-        "c": 1.0045102513966939e-19,
-        "d": -0.454
+        "c": 0.0,
+        "d": 6.799
       },
       "type": "CSG::CSGPlane"
     },
-    "fuel_pin_1_radial_duct_2_surf_4": {
+    "fuel_assembly_1_radial_duct_0_expanded_surf_2": {
       "coefficients": {
-        "a": -0.49999999999999967,
-        "b": 0.8660254037844388,
-        "c": -5.171582785664752e-19,
-        "d": -0.454
+        "a": -0.49999999999999983,
+        "b": 0.8660254037844387,
+        "c": 0.0,
+        "d": 6.799
       },
       "type": "CSG::CSGPlane"
     },
-    "fuel_pin_1_radial_duct_2_surf_5": {
+    "fuel_assembly_1_radial_duct_0_expanded_surf_3": {
       "coefficients": {
         "a": -1.0,
-        "b": 7.412301103901406e-16,
-        "c": 9.251858538542967e-19,
-        "d": -0.454
+        "b": 1.2246467991473532e-16,
+        "c": 0.0,
+        "d": 6.799
       },
       "type": "CSG::CSGPlane"
     },
-    "fuel_pin_1_radial_ring_0": {
+    "fuel_assembly_1_radial_duct_0_expanded_surf_4": {
+      "coefficients": {
+        "a": -0.5000000000000004,
+        "b": -0.8660254037844384,
+        "c": 0.0,
+        "d": 6.799
+      },
+      "type": "CSG::CSGPlane"
+    },
+    "fuel_assembly_1_radial_duct_0_expanded_surf_5": {
+      "coefficients": {
+        "a": 0.5000000000000001,
+        "b": -0.8660254037844386,
+        "c": 0.0,
+        "d": 6.799
+      },
+      "type": "CSG::CSGPlane"
+    },
+    "fuel_assembly_1_radial_duct_1_expanded_surf_0": {
+      "coefficients": {
+        "a": 1.0,
+        "b": 0.0,
+        "c": 0.0,
+        "d": 7.099
+      },
+      "type": "CSG::CSGPlane"
+    },
+    "fuel_assembly_1_radial_duct_1_expanded_surf_1": {
+      "coefficients": {
+        "a": 0.5000000000000001,
+        "b": 0.8660254037844386,
+        "c": 0.0,
+        "d": 7.099
+      },
+      "type": "CSG::CSGPlane"
+    },
+    "fuel_assembly_1_radial_duct_1_expanded_surf_2": {
+      "coefficients": {
+        "a": -0.49999999999999983,
+        "b": 0.8660254037844387,
+        "c": 0.0,
+        "d": 7.099
+      },
+      "type": "CSG::CSGPlane"
+    },
+    "fuel_assembly_1_radial_duct_1_expanded_surf_3": {
+      "coefficients": {
+        "a": -1.0,
+        "b": 1.2246467991473532e-16,
+        "c": 0.0,
+        "d": 7.099
+      },
+      "type": "CSG::CSGPlane"
+    },
+    "fuel_assembly_1_radial_duct_1_expanded_surf_4": {
+      "coefficients": {
+        "a": -0.5000000000000004,
+        "b": -0.8660254037844384,
+        "c": 0.0,
+        "d": 7.099
+      },
+      "type": "CSG::CSGPlane"
+    },
+    "fuel_assembly_1_radial_duct_1_expanded_surf_5": {
+      "coefficients": {
+        "a": 0.5000000000000001,
+        "b": -0.8660254037844386,
+        "c": 0.0,
+        "d": 7.099
+      },
+      "type": "CSG::CSGPlane"
+    },
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_radial_ring_0": {
       "coefficients": {
         "r": 0.348,
         "x0": 0.0,
@@ -1129,7 +1039,7 @@
       },
       "type": "CSG::CSGZCylinder"
     },
-    "fuel_pin_1_radial_ring_1": {
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_radial_ring_1": {
       "coefficients": {
         "r": 0.40333,
         "x0": 0.0,
@@ -1137,16 +1047,109 @@
       },
       "type": "CSG::CSGZCylinder"
     },
-    "rgmb_axial_plane_0": {
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_radial_ring_0": {
       "coefficients": {
-        "a": 0.0,
+        "r": 0.348,
+        "x0": 0.0,
+        "y0": 0.0
+      },
+      "type": "CSG::CSGZCylinder"
+    },
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_radial_ring_1": {
+      "coefficients": {
+        "r": 0.40333,
+        "x0": 0.0,
+        "y0": 0.0
+      },
+      "type": "CSG::CSGZCylinder"
+    },
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_radial_ring_0": {
+      "coefficients": {
+        "r": 0.348,
+        "x0": 0.0,
+        "y0": 0.0
+      },
+      "type": "CSG::CSGZCylinder"
+    },
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_radial_ring_1": {
+      "coefficients": {
+        "r": 0.40333,
+        "x0": 0.0,
+        "y0": 0.0
+      },
+      "type": "CSG::CSGZCylinder"
+    },
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_radial_ring_0": {
+      "coefficients": {
+        "r": 0.348,
+        "x0": 0.0,
+        "y0": 0.0
+      },
+      "type": "CSG::CSGZCylinder"
+    },
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_radial_ring_1": {
+      "coefficients": {
+        "r": 0.40333,
+        "x0": 0.0,
+        "y0": 0.0
+      },
+      "type": "CSG::CSGZCylinder"
+    },
+    "fuel_pin_1_radial_boundary_expanded_surf_0": {
+      "coefficients": {
+        "a": 1.0,
         "b": 0.0,
-        "c": 1.0,
-        "d": 0.0
+        "c": 0.0,
+        "d": 0.454
       },
       "type": "CSG::CSGPlane"
     },
-    "rgmb_axial_plane_1": {
+    "fuel_pin_1_radial_boundary_expanded_surf_1": {
+      "coefficients": {
+        "a": 0.5000000000000001,
+        "b": 0.8660254037844386,
+        "c": 0.0,
+        "d": 0.454
+      },
+      "type": "CSG::CSGPlane"
+    },
+    "fuel_pin_1_radial_boundary_expanded_surf_2": {
+      "coefficients": {
+        "a": -0.49999999999999983,
+        "b": 0.8660254037844387,
+        "c": 0.0,
+        "d": 0.454
+      },
+      "type": "CSG::CSGPlane"
+    },
+    "fuel_pin_1_radial_boundary_expanded_surf_3": {
+      "coefficients": {
+        "a": -1.0,
+        "b": 1.2246467991473532e-16,
+        "c": 0.0,
+        "d": 0.454
+      },
+      "type": "CSG::CSGPlane"
+    },
+    "fuel_pin_1_radial_boundary_expanded_surf_4": {
+      "coefficients": {
+        "a": -0.5000000000000004,
+        "b": -0.8660254037844384,
+        "c": 0.0,
+        "d": 0.454
+      },
+      "type": "CSG::CSGPlane"
+    },
+    "fuel_pin_1_radial_boundary_expanded_surf_5": {
+      "coefficients": {
+        "a": 0.5000000000000001,
+        "b": -0.8660254037844386,
+        "c": 0.0,
+        "d": 0.454
+      },
+      "type": "CSG::CSGPlane"
+    },
+    "rgmb_axial_plane_0": {
       "coefficients": {
         "a": 0.0,
         "b": 0.0,
@@ -1155,7 +1158,7 @@
       },
       "type": "CSG::CSGPlane"
     },
-    "rgmb_axial_plane_2": {
+    "rgmb_axial_plane_1": {
       "coefficients": {
         "a": 0.0,
         "b": 0.0,
@@ -1164,7 +1167,7 @@
       },
       "type": "CSG::CSGPlane"
     },
-    "rgmb_axial_plane_3": {
+    "rgmb_axial_plane_2": {
       "coefficients": {
         "a": 0.0,
         "b": 0.0,
@@ -1173,7 +1176,16 @@
       },
       "type": "CSG::CSGPlane"
     },
-    "rgmb_axial_plane_4": {
+    "rgmb_axial_plane_bottom_boundary": {
+      "coefficients": {
+        "a": 0.0,
+        "b": 0.0,
+        "c": 1.0,
+        "d": 0.0
+      },
+      "type": "CSG::CSGPlane"
+    },
+    "rgmb_axial_plane_top_boundary": {
       "coefficients": {
         "a": 0.0,
         "b": 0.0,
@@ -1221,20 +1233,40 @@
         "fuel_assembly_1_duct_cell_radial_1"
       ]
     },
-    "fuel_pin_1_univ": {
+    "fuel_pin_1_ducted_pin_unit_expanded_root": {
       "cells": [
-        "fuel_pin_1_cell_radial_0_axial_0",
-        "fuel_pin_1_cell_radial_0_axial_1",
-        "fuel_pin_1_cell_radial_0_axial_2",
-        "fuel_pin_1_cell_radial_0_axial_3",
-        "fuel_pin_1_cell_radial_1_axial_0",
-        "fuel_pin_1_cell_radial_1_axial_1",
-        "fuel_pin_1_cell_radial_1_axial_2",
-        "fuel_pin_1_cell_radial_1_axial_3",
-        "fuel_pin_1_cell_radial_2_axial_0",
-        "fuel_pin_1_cell_radial_2_axial_1",
-        "fuel_pin_1_cell_radial_2_axial_2",
-        "fuel_pin_1_cell_radial_2_axial_3"
+        "fuel_pin_1_ducted_pin_unit_cell_radial_0_axial_0",
+        "fuel_pin_1_ducted_pin_unit_cell_radial_0_axial_1",
+        "fuel_pin_1_ducted_pin_unit_cell_radial_0_axial_2",
+        "fuel_pin_1_ducted_pin_unit_cell_radial_0_axial_3"
+      ]
+    },
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_expanded_root": {
+      "cells": [
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_cell_radial_0",
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_cell_radial_1",
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_0_cell_radial_2"
+      ]
+    },
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_expanded_root": {
+      "cells": [
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_cell_radial_0",
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_cell_radial_1",
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_1_cell_radial_2"
+      ]
+    },
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_expanded_root": {
+      "cells": [
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_cell_radial_0",
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_cell_radial_1",
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_2_cell_radial_2"
+      ]
+    },
+    "fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_expanded_root": {
+      "cells": [
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_cell_radial_0",
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_cell_radial_1",
+        "fuel_pin_1_ducted_pin_unit_pin_unit_axial_3_cell_radial_2"
       ]
     }
   }

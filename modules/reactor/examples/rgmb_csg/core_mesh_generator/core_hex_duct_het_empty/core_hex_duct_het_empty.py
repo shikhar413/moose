@@ -29,41 +29,41 @@ openmc_mats = openmc.Materials([rgmb_region_1, rgmb_region_2, rgmb_region_3, rgm
 openmc_mats.export_to_xml()
 
 # Define surfaces
-cmg_radial_ring = openmc.ZCylinder(r=3.55158, y0=0, x0=0, boundary_type='vacuum')
-pin1_radial_duct_0_surf_0 = openmc.Plane(d=-0.5, b=-0.866025, c=0, a=-0.5)
-pin1_radial_duct_0_surf_1 = openmc.Plane(d=-0.5, b=-0.866025, c=6.77283e-19, a=0.5)
-pin1_radial_duct_0_surf_2 = openmc.Plane(d=-0.5, b=-3.84593e-16, c=0, a=1)
-pin1_radial_duct_0_surf_3 = openmc.Plane(d=-0.5, b=0.866025, c=0, a=0.5)
-pin1_radial_duct_0_surf_4 = openmc.Plane(d=-0.5, b=0.866025, c=-4.62593e-19, a=-0.5)
-pin1_radial_duct_0_surf_5 = openmc.Plane(d=-0.5, b=6.73037e-16, c=-9.25186e-19, a=-1)
-pin2_radial_duct_0_surf_0 = openmc.Plane(d=-0.6, b=-0.866025, c=-1.81805e-18, a=-0.5)
-pin2_radial_duct_0_surf_1 = openmc.Plane(d=-0.6, b=-0.866025, c=1.56056e-18, a=0.5)
-pin2_radial_duct_0_surf_2 = openmc.Plane(d=-0.6, b=-3.20494e-16, c=0, a=1)
-pin2_radial_duct_0_surf_3 = openmc.Plane(d=-0.6, b=0.866025, c=1.75449e-19, a=0.5)
-pin2_radial_duct_0_surf_4 = openmc.Plane(d=-0.6, b=0.866025, c=-7.09606e-19, a=-0.5)
-pin2_radial_duct_0_surf_5 = openmc.Plane(d=-0.6, b=6.40988e-16, c=0, a=-1)
-rgmb_axial_plane_0 = openmc.Plane(d=0, b=0, c=1, a=0, boundary_type='vacuum')
-rgmb_axial_plane_1 = openmc.Plane(d=1, b=0, c=1, a=0, boundary_type='vacuum')
+cmg_radial_boundary = openmc.ZCylinder(r=3.55158, y0=0, x0=0, boundary_type='vacuum')
+pin1_ducted_pin_unit_radial_duct_0_expanded_surf_0 = openmc.Plane(d=0.5, b=0, c=0, a=1)
+pin1_ducted_pin_unit_radial_duct_0_expanded_surf_1 = openmc.Plane(d=0.5, b=0.866025, c=0, a=0.5)
+pin1_ducted_pin_unit_radial_duct_0_expanded_surf_2 = openmc.Plane(d=0.5, b=0.866025, c=0, a=-0.5)
+pin1_ducted_pin_unit_radial_duct_0_expanded_surf_3 = openmc.Plane(d=0.5, b=1.22465e-16, c=0, a=-1)
+pin1_ducted_pin_unit_radial_duct_0_expanded_surf_4 = openmc.Plane(d=0.5, b=-0.866025, c=0, a=-0.5)
+pin1_ducted_pin_unit_radial_duct_0_expanded_surf_5 = openmc.Plane(d=0.5, b=-0.866025, c=0, a=0.5)
+pin2_ducted_pin_unit_radial_duct_0_expanded_surf_0 = openmc.Plane(d=0.6, b=0, c=0, a=1)
+pin2_ducted_pin_unit_radial_duct_0_expanded_surf_1 = openmc.Plane(d=0.6, b=0.866025, c=0, a=0.5)
+pin2_ducted_pin_unit_radial_duct_0_expanded_surf_2 = openmc.Plane(d=0.6, b=0.866025, c=0, a=-0.5)
+pin2_ducted_pin_unit_radial_duct_0_expanded_surf_3 = openmc.Plane(d=0.6, b=1.22465e-16, c=0, a=-1)
+pin2_ducted_pin_unit_radial_duct_0_expanded_surf_4 = openmc.Plane(d=0.6, b=-0.866025, c=0, a=-0.5)
+pin2_ducted_pin_unit_radial_duct_0_expanded_surf_5 = openmc.Plane(d=0.6, b=-0.866025, c=0, a=0.5)
+rgmb_axial_plane_bottom_boundary = openmc.Plane(d=0, b=0, c=1, a=0, boundary_type='vacuum')
+rgmb_axial_plane_top_boundary = openmc.Plane(d=1, b=0, c=1, a=0, boundary_type='vacuum')
 
 # Define cells, universes, and lattices
 empty_cell = openmc.Cell()
 empty_univ = openmc.Universe(cells=[empty_cell])
-pin2_cell_radial_1_axial_0 = openmc.Cell(fill=rgmb_region_4, region=(~(+pin2_radial_duct_0_surf_0 & +pin2_radial_duct_0_surf_1 & +pin2_radial_duct_0_surf_2 & +pin2_radial_duct_0_surf_3 & +pin2_radial_duct_0_surf_4 & +pin2_radial_duct_0_surf_5)))
-pin2_cell_radial_0_axial_0 = openmc.Cell(fill=rgmb_region_3, region=(+pin2_radial_duct_0_surf_0 & +pin2_radial_duct_0_surf_1 & +pin2_radial_duct_0_surf_2 & +pin2_radial_duct_0_surf_3 & +pin2_radial_duct_0_surf_4 & +pin2_radial_duct_0_surf_5))
-pin2_univ = openmc.Universe(cells=[pin2_cell_radial_0_axial_0, pin2_cell_radial_1_axial_0])
-pin1_cell_radial_1_axial_0 = openmc.Cell(fill=rgmb_region_2, region=(~(+pin1_radial_duct_0_surf_0 & +pin1_radial_duct_0_surf_1 & +pin1_radial_duct_0_surf_2 & +pin1_radial_duct_0_surf_3 & +pin1_radial_duct_0_surf_4 & +pin1_radial_duct_0_surf_5)))
-pin1_cell_radial_0_axial_0 = openmc.Cell(fill=rgmb_region_1, region=(+pin1_radial_duct_0_surf_0 & +pin1_radial_duct_0_surf_1 & +pin1_radial_duct_0_surf_2 & +pin1_radial_duct_0_surf_3 & +pin1_radial_duct_0_surf_4 & +pin1_radial_duct_0_surf_5))
-pin1_univ = openmc.Universe(cells=[pin1_cell_radial_0_axial_0, pin1_cell_radial_1_axial_0])
+pin2_ducted_pin_unit_cell_radial_1 = openmc.Cell(fill=rgmb_region_4, region=(~(-pin2_ducted_pin_unit_radial_duct_0_expanded_surf_0 & -pin2_ducted_pin_unit_radial_duct_0_expanded_surf_1 & -pin2_ducted_pin_unit_radial_duct_0_expanded_surf_2 & -pin2_ducted_pin_unit_radial_duct_0_expanded_surf_3 & -pin2_ducted_pin_unit_radial_duct_0_expanded_surf_4 & -pin2_ducted_pin_unit_radial_duct_0_expanded_surf_5)))
+pin2_ducted_pin_unit_cell_radial_0 = openmc.Cell(fill=rgmb_region_3, region=(-pin2_ducted_pin_unit_radial_duct_0_expanded_surf_0 & -pin2_ducted_pin_unit_radial_duct_0_expanded_surf_1 & -pin2_ducted_pin_unit_radial_duct_0_expanded_surf_2 & -pin2_ducted_pin_unit_radial_duct_0_expanded_surf_3 & -pin2_ducted_pin_unit_radial_duct_0_expanded_surf_4 & -pin2_ducted_pin_unit_radial_duct_0_expanded_surf_5))
+pin2_ducted_pin_unit_expanded_root = openmc.Universe(cells=[pin2_ducted_pin_unit_cell_radial_0, pin2_ducted_pin_unit_cell_radial_1])
+pin1_ducted_pin_unit_cell_radial_1 = openmc.Cell(fill=rgmb_region_2, region=(~(-pin1_ducted_pin_unit_radial_duct_0_expanded_surf_0 & -pin1_ducted_pin_unit_radial_duct_0_expanded_surf_1 & -pin1_ducted_pin_unit_radial_duct_0_expanded_surf_2 & -pin1_ducted_pin_unit_radial_duct_0_expanded_surf_3 & -pin1_ducted_pin_unit_radial_duct_0_expanded_surf_4 & -pin1_ducted_pin_unit_radial_duct_0_expanded_surf_5)))
+pin1_ducted_pin_unit_cell_radial_0 = openmc.Cell(fill=rgmb_region_1, region=(-pin1_ducted_pin_unit_radial_duct_0_expanded_surf_0 & -pin1_ducted_pin_unit_radial_duct_0_expanded_surf_1 & -pin1_ducted_pin_unit_radial_duct_0_expanded_surf_2 & -pin1_ducted_pin_unit_radial_duct_0_expanded_surf_3 & -pin1_ducted_pin_unit_radial_duct_0_expanded_surf_4 & -pin1_ducted_pin_unit_radial_duct_0_expanded_surf_5))
+pin1_ducted_pin_unit_expanded_root = openmc.Universe(cells=[pin1_ducted_pin_unit_cell_radial_0, pin1_ducted_pin_unit_cell_radial_1])
 cmg_lattice = openmc.HexLattice()
 cmg_lattice.orientation = 'x'
 cmg_lattice.pitch = (1.42063,)
 cmg_lattice.center = (0, 0)
 cmg_lattice.outer = empty_univ
 cmg_lattice.universes = [
-  [empty_univ, pin2_univ, empty_univ, pin2_univ, empty_univ, pin2_univ],
-  [pin1_univ]
+  [empty_univ, pin2_ducted_pin_unit_expanded_root, empty_univ, pin2_ducted_pin_unit_expanded_root, empty_univ, pin2_ducted_pin_unit_expanded_root],
+  [pin1_ducted_pin_unit_expanded_root]
 ]
-cmg_lattice_cell = openmc.Cell(fill=cmg_lattice, region=(-cmg_radial_ring & +rgmb_axial_plane_0 & -rgmb_axial_plane_1))
+cmg_lattice_cell = openmc.Cell(fill=cmg_lattice, region=(-cmg_radial_boundary & +rgmb_axial_plane_bottom_boundary & -rgmb_axial_plane_top_boundary))
 root_universe = openmc.Universe(cells=[cmg_lattice_cell])
 geom = openmc.Geometry(root_universe)
 geom.export_to_xml()

@@ -11,27 +11,27 @@ openmc_mats = openmc.Materials([rgmb_region_2])
 openmc_mats.export_to_xml()
 
 # Define surfaces
-cmg_radial_ring = openmc.ZCylinder(r=3.55158, y0=0, x0=0, boundary_type='vacuum')
-rgmb_axial_plane_0 = openmc.Plane(d=0, b=0, c=1, a=0, boundary_type='vacuum')
-rgmb_axial_plane_1 = openmc.Plane(d=1, b=0, c=1, a=0, boundary_type='vacuum')
+cmg_radial_boundary = openmc.ZCylinder(r=3.55158, y0=0, x0=0, boundary_type='vacuum')
+rgmb_axial_plane_bottom_boundary = openmc.Plane(d=0, b=0, c=1, a=0, boundary_type='vacuum')
+rgmb_axial_plane_top_boundary = openmc.Plane(d=1, b=0, c=1, a=0, boundary_type='vacuum')
 
 # Define cells, universes, and lattices
 empty_cell = openmc.Cell()
 empty_univ = openmc.Universe(cells=[empty_cell])
-pin2_cell_radial_0_axial_0 = openmc.Cell(fill=rgmb_region_2)
-pin2_univ = openmc.Universe(cells=[pin2_cell_radial_0_axial_0])
-pin1_cell_radial_0_axial_0 = openmc.Cell(fill=rgmb_region_2)
-pin1_univ = openmc.Universe(cells=[pin1_cell_radial_0_axial_0])
+pin2_ducted_pin_unit_cell_radial_0 = openmc.Cell(fill=rgmb_region_2)
+pin2_ducted_pin_unit_expanded_root = openmc.Universe(cells=[pin2_ducted_pin_unit_cell_radial_0])
+pin1_ducted_pin_unit_cell_radial_0 = openmc.Cell(fill=rgmb_region_2)
+pin1_ducted_pin_unit_expanded_root = openmc.Universe(cells=[pin1_ducted_pin_unit_cell_radial_0])
 cmg_lattice = openmc.HexLattice()
 cmg_lattice.orientation = 'x'
 cmg_lattice.pitch = (1.42063,)
 cmg_lattice.center = (0, 0)
 cmg_lattice.outer = empty_univ
 cmg_lattice.universes = [
-  [empty_univ, pin2_univ, empty_univ, pin2_univ, empty_univ, pin2_univ],
-  [pin1_univ]
+  [empty_univ, pin2_ducted_pin_unit_expanded_root, empty_univ, pin2_ducted_pin_unit_expanded_root, empty_univ, pin2_ducted_pin_unit_expanded_root],
+  [pin1_ducted_pin_unit_expanded_root]
 ]
-cmg_lattice_cell = openmc.Cell(fill=cmg_lattice, region=(-cmg_radial_ring & +rgmb_axial_plane_0 & -rgmb_axial_plane_1))
+cmg_lattice_cell = openmc.Cell(fill=cmg_lattice, region=(-cmg_radial_boundary & +rgmb_axial_plane_bottom_boundary & -rgmb_axial_plane_top_boundary))
 root_universe = openmc.Universe(cells=[cmg_lattice_cell])
 geom = openmc.Geometry(root_universe)
 geom.export_to_xml()

@@ -1260,7 +1260,11 @@ CSGBase::getLinkedCSGObjects(const CSGUniverse & univ,
                              std::set<std::string> & linked_cell_names,
                              std::set<std::string> & linked_surface_names) const
 {
-  linked_universe_names.insert(univ.getName());
+  // NEXT 3 LINES CAN BE REMOVED ONCE moose #34057 gets approved
+  // A universe referenced from many lattice positions only needs its subtree walked once
+  if (!linked_universe_names.insert(univ.getName()).second)
+    return;
+
   const auto & univ_cells = univ.getAllCells();
   for (const CSGCell & cell : univ_cells)
   {
@@ -1819,6 +1823,7 @@ CSGBase::generateOpenMCOutput(const std::string & file_base) const
   std::vector<std::pair<std::string, std::string>> linked_cell_lattice_universe_names;
   std::set<std::string> linked_surface_names;
   std::set<std::string> linked_material_names;
+  std::set<std::string> visited_universe_names;
 
   std::ofstream os_py;
   std::string py_filename = file_base + ".py";
@@ -1828,7 +1833,8 @@ CSGBase::generateOpenMCOutput(const std::string & file_base) const
   getLinkedCSGComponents(getRootUniverse(),
                          linked_cell_lattice_universe_names,
                          linked_surface_names,
-                         linked_material_names);
+                         linked_material_names,
+                         visited_universe_names);
 
   os_py << "import openmc\n\n";
 
@@ -2149,31 +2155,34 @@ CSGBase::getLinkedCSGComponents(
     const CSGUniverse & univ,
     std::vector<std::pair<std::string, std::string>> & linked_cell_lattice_universe_names,
     std::set<std::string> & linked_surface_names,
-    std::set<std::string> & linked_material_names) const
+    std::set<std::string> & linked_material_names,
+    std::set<std::string> & visited_universe_names) const
 {
   // TODO define linked_cell_lattice_universe_names in a more generalized way instead of storing
   // what component type it is as a string
   // TODO can this method be merged with checkUniverseLinking?
-  linked_cell_lattice_universe_names.insert(linked_cell_lattice_universe_names.begin(),
-                                            std::make_pair(univ.getName(), "universe"));
+
+  // A universe referenced from many lattice positions only needs its subtree walked once
+  if (!visited_universe_names.insert(univ.getName()).second)
+    return;
+
   const auto & univ_cells = univ.getAllCells();
   for (const CSGCell & cell : univ_cells)
   {
     const auto cell_surfs = cell.getRegion().getSurfaces();
     for (const auto & surf : cell_surfs)
       linked_surface_names.insert(surf.get().getName());
-    linked_cell_lattice_universe_names.insert(linked_cell_lattice_universe_names.begin(),
-                                              std::make_pair(cell.getName(), "cell"));
-    if (cell.getFillType() == "UNIVERSE")
+
+    const auto fill_type = cell.getFillType();
+    if (fill_type == "UNIVERSE")
       getLinkedCSGComponents(cell.getFillUniverse(),
                              linked_cell_lattice_universe_names,
                              linked_surface_names,
-                             linked_material_names);
-    else if (cell.getFillType() == "LATTICE")
+                             linked_material_names,
+                             visited_universe_names);
+    else if (fill_type == "LATTICE")
     {
       const auto & lattice = cell.getFillLattice();
-      linked_cell_lattice_universe_names.insert(linked_cell_lattice_universe_names.begin(),
-                                                std::make_pair(lattice.getName(), "lattice"));
       for (const auto & univ_list : lattice.getUniverses())
         for (const auto & univ_ref : univ_list)
         {
@@ -2181,7 +2190,8 @@ CSGBase::getLinkedCSGComponents(
           getLinkedCSGComponents(lattice_univ,
                                  linked_cell_lattice_universe_names,
                                  linked_surface_names,
-                                 linked_material_names);
+                                 linked_material_names,
+                                 visited_universe_names);
         }
 
       if (lattice.getOuterType() == "UNIVERSE")
@@ -2190,14 +2200,24 @@ CSGBase::getLinkedCSGComponents(
         getLinkedCSGComponents(outer_univ,
                                linked_cell_lattice_universe_names,
                                linked_surface_names,
-                               linked_material_names);
+                               linked_material_names,
+                               visited_universe_names);
       }
       else if (lattice.getOuterType() == "CSG_MATERIAL")
         linked_material_names.insert(lattice.getOuterMaterial());
+
+      // The lattice places the universes gathered above, so it must come after them
+      linked_cell_lattice_universe_names.emplace_back(lattice.getName(), "lattice");
     }
-    else if (cell.getFillType() == "CSG_MATERIAL")
+    else if (fill_type == "CSG_MATERIAL")
       linked_material_names.insert(cell.getFillMaterial());
+
+    // The cell references whatever fills it, so it must come after that fill
+    linked_cell_lattice_universe_names.emplace_back(cell.getName(), "cell");
   }
+
+  // The universe references its cells, so it must come after all of them
+  linked_cell_lattice_universe_names.emplace_back(univ.getName(), "universe");
 }
 
 bool

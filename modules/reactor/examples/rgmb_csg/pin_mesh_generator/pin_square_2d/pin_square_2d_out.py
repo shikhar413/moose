@@ -38,10 +38,10 @@ pin1_radial_boundary_expanded_surf_2 = openmc.Plane(d=0.710315, b=1.22465e-16, c
 pin1_radial_boundary_expanded_surf_3 = openmc.Plane(d=0.710315, b=-1, c=0, a=-1.83697e-16, boundary_type='vacuum')
 
 # Define cells, universes, and lattices
-pin1_ducted_pin_unit_pin_unit_cell_radial_3 = openmc.Cell(fill=rgmb_region_4, region=(~(-pin1_ducted_pin_unit_pin_unit_radial_ring_2)))
-pin1_ducted_pin_unit_pin_unit_cell_radial_2 = openmc.Cell(fill=rgmb_region_3, region=(-pin1_ducted_pin_unit_pin_unit_radial_ring_2 & ~(-pin1_ducted_pin_unit_pin_unit_radial_ring_1)))
-pin1_ducted_pin_unit_pin_unit_cell_radial_1 = openmc.Cell(fill=rgmb_region_2, region=(-pin1_ducted_pin_unit_pin_unit_radial_ring_1 & ~(-pin1_ducted_pin_unit_pin_unit_radial_ring_0)))
 pin1_ducted_pin_unit_pin_unit_cell_radial_0 = openmc.Cell(fill=rgmb_region_1, region=(-pin1_ducted_pin_unit_pin_unit_radial_ring_0))
+pin1_ducted_pin_unit_pin_unit_cell_radial_1 = openmc.Cell(fill=rgmb_region_2, region=(-pin1_ducted_pin_unit_pin_unit_radial_ring_1 & ~(-pin1_ducted_pin_unit_pin_unit_radial_ring_0)))
+pin1_ducted_pin_unit_pin_unit_cell_radial_2 = openmc.Cell(fill=rgmb_region_3, region=(-pin1_ducted_pin_unit_pin_unit_radial_ring_2 & ~(-pin1_ducted_pin_unit_pin_unit_radial_ring_1)))
+pin1_ducted_pin_unit_pin_unit_cell_radial_3 = openmc.Cell(fill=rgmb_region_4, region=(~(-pin1_ducted_pin_unit_pin_unit_radial_ring_2)))
 pin1_ducted_pin_unit_pin_unit_expanded_root = openmc.Universe(cells=[pin1_ducted_pin_unit_pin_unit_cell_radial_0, pin1_ducted_pin_unit_pin_unit_cell_radial_1, pin1_ducted_pin_unit_pin_unit_cell_radial_2, pin1_ducted_pin_unit_pin_unit_cell_radial_3])
 pin1_ducted_pin_unit_cell_radial_0 = openmc.Cell(fill=pin1_ducted_pin_unit_pin_unit_expanded_root)
 pin1_ducted_pin_unit_expanded_root = openmc.Universe(cells=[pin1_ducted_pin_unit_cell_radial_0])

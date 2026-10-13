@@ -966,11 +966,27 @@ private:
                            std::set<std::string> & linked_cell_names,
                            std::set<std::string> & linked_surface_names) const;
 
+  /**
+   * @brief Recursive method to retrieve all cells, lattices, universes, surfaces, and materials
+   * linked to the current universe, for writing out as an OpenMC model.
+   *
+   * Components are appended in post-order, so that each component appears after everything it
+   * refers to. Writing them out in that order guarantees every name is defined before it is used.
+   *
+   * @param univ Reference to universe under consideration
+   * @param linked_cell_lattice_universe_names List of (name, component type) pairs, where component
+   *                                           type is one of "cell", "lattice", or "universe"
+   * @param linked_surface_names Set of surface names linked to current universe
+   * @param linked_material_names Set of material names linked to current universe
+   * @param visited_universe_names Names of universes already traversed, used to avoid re-walking a
+   *                               universe that is referenced from more than one location
+   */
   void getLinkedCSGComponents(
       const CSGUniverse & univ,
       std::vector<std::pair<std::string, std::string>> & linked_cell_lattice_universe_names,
       std::set<std::string> & linked_surface_names,
-      std::set<std::string> & linked_material_names) const;
+      std::set<std::string> & linked_material_names,
+      std::set<std::string> & visited_universe_names) const;
 
   void defineOpenMCCell(const std::string & surf_name, std::ofstream & os_py) const;
   void defineOpenMCUniverse(const std::string & univ_name, std::ofstream & os_py) const;

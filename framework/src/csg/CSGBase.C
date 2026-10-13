@@ -1820,35 +1820,39 @@ CSGBase::generateOpenMCOutput(const std::string & file_base) const
   std::set<std::string> linked_surface_names;
   std::set<std::string> linked_material_names;
 
-  Moose::out << "Generating OpenMC output\n******************************\n";
+  std::ofstream os_py;
+  std::string py_filename = file_base + ".py";
+  os_py.open(py_filename, std::ofstream::out | std::ofstream::trunc);
+
+  Moose::out << "Generating OpenMC output\n";
   getLinkedCSGComponents(getRootUniverse(),
                          linked_cell_lattice_universe_names,
                          linked_surface_names,
                          linked_material_names);
 
-  Moose::out << "import openmc\n\n";
+  os_py << "import openmc\n\n";
 
   // TODO default material compositions for now
-  Moose::out << "# Define material fills as materials\n";
+  os_py << "# Define material fills as materials\n";
   for (const auto & mat_name : linked_material_names)
   {
-    Moose::out << mat_name << " = openmc.Material(name=\"" << mat_name << "\")\n";
-    Moose::out << mat_name << ".add_nuclide('U235', 0.03)\n";
-    Moose::out << mat_name << ".add_nuclide('U238', 0.97)\n";
-    Moose::out << mat_name << ".add_nuclide('O16', 2.0)\n";
-    Moose::out << mat_name << ".set_density('g/cm3', 10.0)\n\n";
+    os_py << mat_name << " = openmc.Material(name=\"" << mat_name << "\")\n";
+    os_py << mat_name << ".add_nuclide('U235', 0.03)\n";
+    os_py << mat_name << ".add_nuclide('U238', 0.97)\n";
+    os_py << mat_name << ".add_nuclide('O16', 2.0)\n";
+    os_py << mat_name << ".set_density('g/cm3', 10.0)\n\n";
   }
-  Moose::out << "openmc_mats = openmc.Materials([" << Moose::stringify(linked_material_names)
+  os_py << "openmc_mats = openmc.Materials([" << Moose::stringify(linked_material_names)
              << "])\n";
-  Moose::out << "openmc_mats.export_to_xml()\n\n";
+  os_py << "openmc_mats.export_to_xml()\n\n";
 
-  Moose::out << "# Define surfaces\n";
+  os_py << "# Define surfaces\n";
   for (const auto & surf_name : linked_surface_names)
     defineOpenMCSurface(surf_name,
-                        outer_boundary_surfs.find(surf_name) != outer_boundary_surfs.end());
-  Moose::out << "\n";
+                        outer_boundary_surfs.find(surf_name) != outer_boundary_surfs.end(), os_py);
+  os_py << "\n";
 
-  Moose::out << "# Define cells, universes, and lattices\n";
+  os_py << "# Define cells, universes, and lattices\n";
   std::set<std::string> geometry_cells;
   std::set<std::string> geometry_univs;
   std::set<std::string> geometry_lattices;
@@ -1857,59 +1861,60 @@ CSGBase::generateOpenMCOutput(const std::string & file_base) const
     if (component_type == "cell")
     {
       if (geometry_cells.find(csg_component_name) == geometry_cells.end())
-        defineOpenMCCell(csg_component_name);
+        defineOpenMCCell(csg_component_name, os_py);
       geometry_cells.insert(csg_component_name);
     }
     else if (component_type == "universe")
     {
       if (geometry_univs.find(csg_component_name) == geometry_univs.end())
-        defineOpenMCUniverse(csg_component_name);
+        defineOpenMCUniverse(csg_component_name, os_py);
       geometry_univs.insert(csg_component_name);
     }
     else if (component_type == "lattice")
     {
       if (geometry_lattices.find(csg_component_name) == geometry_lattices.end())
-        defineOpenMCLattice(csg_component_name);
+        defineOpenMCLattice(csg_component_name, os_py);
       geometry_lattices.insert(csg_component_name);
     }
     else
       mooseError("Undefined CSG component type\n");
   }
-  Moose::out << "geom = openmc.Geometry(root_universe)\n";
-  Moose::out << "geom.export_to_xml()\n\n";
+  os_py << "geom = openmc.Geometry(root_universe)\n";
+  os_py << "geom.export_to_xml()\n\n";
 
-  Moose::out << "# Define settings\n";
-  Moose::out << "point = openmc.stats.Point((" << yz_plot_origin(0) << ", " << yz_plot_origin(1)
+  os_py << "# Define settings\n";
+  os_py << "point = openmc.stats.Point((" << yz_plot_origin(0) << ", " << yz_plot_origin(1)
              << ", " << yz_plot_origin(2) << "))\n";
-  Moose::out << "src = openmc.Source(space=point)\n";
-  Moose::out << "settings = openmc.Settings()\n";
-  Moose::out << "settings.source = src\n";
-  Moose::out << "settings.batches = 100\n";
-  Moose::out << "settings.inactive = 10\n";
-  Moose::out << "settings.particles = 1000\n";
-  Moose::out << "settings.export_to_xml()\n\n";
+  os_py << "src = openmc.Source(space=point)\n";
+  os_py << "settings = openmc.Settings()\n";
+  os_py << "settings.source = src\n";
+  os_py << "settings.batches = 100\n";
+  os_py << "settings.inactive = 10\n";
+  os_py << "settings.particles = 1000\n";
+  os_py << "settings.export_to_xml()\n\n";
 
-  Moose::out << "xy_plot = openmc.Plot()\n";
-  Moose::out << "xy_plot.filename = 'xyplot'\n";
-  Moose::out << "xy_plot.width = (" << xy_plot_width.first << ", " << xy_plot_width.second << ")\n";
-  Moose::out << "xy_plot.pixels = (1000, 1000)\n";
-  Moose::out << "xy_plot.color_by = 'material'\n";
-  Moose::out << "xy_plot.origin = (" << xy_plot_origin(0) << ", " << xy_plot_origin(1) << ", "
+  os_py << "xy_plot = openmc.Plot()\n";
+  os_py << "xy_plot.filename = 'xyplot'\n";
+  os_py << "xy_plot.width = (" << xy_plot_width.first << ", " << xy_plot_width.second << ")\n";
+  os_py << "xy_plot.pixels = (1000, 1000)\n";
+  os_py << "xy_plot.color_by = 'material'\n";
+  os_py << "xy_plot.origin = (" << xy_plot_origin(0) << ", " << xy_plot_origin(1) << ", "
              << xy_plot_origin(2) << ")\n\n";
 
-  Moose::out << "yz_plot = openmc.Plot()\n";
-  Moose::out << "yz_plot.filename = 'yzplot'\n";
-  Moose::out << "yz_plot.width = (" << yz_plot_width.first << ", " << yz_plot_width.second << ")\n";
-  Moose::out << "yz_plot.pixels = (1000, 1000)\n";
-  Moose::out << "yz_plot.color_by = 'material'\n";
-  Moose::out << "yz_plot.basis = 'yz'\n";
-  Moose::out << "yz_plot.origin = (" << yz_plot_origin(0) << ", " << yz_plot_origin(1) << ", "
+  os_py << "yz_plot = openmc.Plot()\n";
+  os_py << "yz_plot.filename = 'yzplot'\n";
+  os_py << "yz_plot.width = (" << yz_plot_width.first << ", " << yz_plot_width.second << ")\n";
+  os_py << "yz_plot.pixels = (1000, 1000)\n";
+  os_py << "yz_plot.color_by = 'material'\n";
+  os_py << "yz_plot.basis = 'yz'\n";
+  os_py << "yz_plot.origin = (" << yz_plot_origin(0) << ", " << yz_plot_origin(1) << ", "
              << yz_plot_origin(2) << ")\n\n";
-  Moose::out << "plots = openmc.Plots([xy_plot, yz_plot])\n";
-  Moose::out << "plots.export_to_xml()\n\n";
+  os_py << "plots = openmc.Plots([xy_plot, yz_plot])\n";
+  os_py << "plots.export_to_xml()\n\n";
 
-  Moose::out << "openmc.run(threads=1)\n";
-  Moose::out << "openmc.plot_geometry()\n";
+  os_py << "openmc.run(threads=1)\n";
+  os_py << "openmc.plot_geometry()\n";
+  os_py.close();
 }
 
 std::set<std::string>
@@ -1927,22 +1932,22 @@ CSGBase::getOuterBoundarySurfs() const
 }
 
 void
-CSGBase::defineOpenMCCell(const std::string & cell_name) const
+CSGBase::defineOpenMCCell(const std::string & cell_name, std::ofstream & os_py) const
 {
   // TODO account for cell transformations
   const auto & csg_cell = _cell_list.getCell(cell_name);
   const auto & cell_region = csg_cell.getRegion();
   const bool has_region = !cell_region.toPostfixStringList().empty();
-  Moose::out << cell_name << " = openmc.Cell(";
+  os_py << cell_name << " = openmc.Cell(";
   if (csg_cell.getFillType() != "VOID")
   {
-    Moose::out << "fill=" << csg_cell.getFillName();
+    os_py << "fill=" << csg_cell.getFillName();
     if (has_region)
-      Moose::out << ", ";
+      os_py << ", ";
   }
   if (has_region)
-    Moose::out << "region=" << toOpenMCRegion(csg_cell.getRegion());
-  Moose::out << ")\n";
+    os_py << "region=" << toOpenMCRegion(csg_cell.getRegion());
+  os_py << ")\n";
 }
 
 void
@@ -1980,7 +1985,7 @@ CSGBase::toOpenMCRegion(const CSGRegion & region) const
 }
 
 void
-CSGBase::defineOpenMCUniverse(const std::string & univ_name) const
+CSGBase::defineOpenMCUniverse(const std::string & univ_name, std::ofstream & os_py) const
 {
   const auto & csg_univ = _universe_list.getUniverse(univ_name);
   auto output_univ_name = csg_univ.isRoot() ? "root_universe" : univ_name;
@@ -1997,7 +2002,7 @@ CSGBase::defineOpenMCUniverse(const std::string & univ_name) const
 
   for (const auto & univ_cell : univ_cells)
     univ_cell_names.push_back(univ_cell.get().getName());
-  Moose::out << output_univ_name << " = openmc.Universe(cells=["
+  os_py << output_univ_name << " = openmc.Universe(cells=["
              << Moose::stringify(univ_cell_names) << "])\n";
 
   if (rotated_univ)
@@ -2005,15 +2010,15 @@ CSGBase::defineOpenMCUniverse(const std::string & univ_name) const
     // TODO this assumes a fixed rotation in z-axis
     const auto target_univ_name = csg_univ.isRoot() ? "root_universe" : univ_name;
     const auto target_cell_name = target_univ_name + "_cell";
-    Moose::out << target_cell_name << " = openmc.Cell(fill=" << output_univ_name << ")\n";
-    Moose::out << target_cell_name << ".rotation = (0, 0, "
+    os_py << target_cell_name << " = openmc.Cell(fill=" << output_univ_name << ")\n";
+    os_py << target_cell_name << ".rotation = (0, 0, "
                << std::get<0>(univ_transforms[0].second) << ")\n";
-    Moose::out << target_univ_name << " = openmc.Universe(cells=[" << target_cell_name << "])\n";
+    os_py << target_univ_name << " = openmc.Universe(cells=[" << target_cell_name << "])\n";
   }
 }
 
 void
-CSGBase::defineOpenMCLattice(const std::string & lattice_name) const
+CSGBase::defineOpenMCLattice(const std::string & lattice_name, std::ofstream & os_py) const
 {
   const auto & csg_lattice = _lattice_list.getLattice(lattice_name);
   const auto & lattice_transforms = csg_lattice.getTransformations();
@@ -2074,69 +2079,69 @@ CSGBase::defineOpenMCLattice(const std::string & lattice_name) const
   else if (outer_type == "CSG_MATERIAL")
   {
     const auto outer_mat_name = csg_lattice.getOuterMaterial();
-    Moose::out << outer_mat_name << "_cell = openmc.Cell(fill=" << outer_mat_name << ")\n";
-    Moose::out << outer_mat_name << "_univ = openmc.Universe(cells=[" << outer_mat_name
+    os_py << outer_mat_name << "_cell = openmc.Cell(fill=" << outer_mat_name << ")\n";
+    os_py << outer_mat_name << "_univ = openmc.Universe(cells=[" << outer_mat_name
                << "_cell])\n";
     outer_univ_name = outer_mat_name + "_univ";
   }
 
-  Moose::out << output_lattice_name << " = openmc." << lattice_type_str << "()\n";
+  os_py << output_lattice_name << " = openmc." << lattice_type_str << "()\n";
   if (lattice_type_str == "HexLattice")
   {
-    Moose::out << output_lattice_name << ".orientation = 'x'\n";
-    Moose::out << output_lattice_name << ".pitch = (" << pitch << ",)\n";
-    Moose::out << output_lattice_name << ".center = (0, 0)\n";
+    os_py << output_lattice_name << ".orientation = 'x'\n";
+    os_py << output_lattice_name << ".pitch = (" << pitch << ",)\n";
+    os_py << output_lattice_name << ".center = (0, 0)\n";
   }
   else
   {
-    Moose::out << output_lattice_name << ".pitch = (" << pitch << ", " << pitch << ")\n";
+    os_py << output_lattice_name << ".pitch = (" << pitch << ", " << pitch << ")\n";
     const auto lower_left_coord_x = -1. * universe_names.size() / 2. * pitch;
     const auto lower_left_coord_y = -1. * universe_names[0].size() / 2. * pitch;
-    Moose::out << output_lattice_name << ".lower_left = (" << lower_left_coord_x << ", "
+    os_py << output_lattice_name << ".lower_left = (" << lower_left_coord_x << ", "
                << lower_left_coord_y << ")\n";
   }
   if (!outer_univ_name.empty())
-    Moose::out << output_lattice_name << ".outer = " << outer_univ_name << "\n";
-  Moose::out << output_lattice_name << ".universes = [\n";
+    os_py << output_lattice_name << ".outer = " << outer_univ_name << "\n";
+  os_py << output_lattice_name << ".universes = [\n";
   for (unsigned int i = 0; i < universe_names.size(); ++i)
   {
-    Moose::out << "  [" << Moose::stringify(universe_names[i]) << "]";
+    os_py << "  [" << Moose::stringify(universe_names[i]) << "]";
     if (i != universe_names.size() - 1)
-      Moose::out << ",";
-    Moose::out << "\n";
+      os_py << ",";
+    os_py << "\n";
   }
-  Moose::out << "]\n";
+  os_py << "]\n";
 
   if (rotated_lattice)
   {
     // TODO this assumes a fixed rotation in z-axis
     const auto target_univ_name = lattice_name;
     const auto target_cell_name = target_univ_name + "_cell";
-    Moose::out << target_cell_name << " = openmc.Cell(fill=" << output_lattice_name << ")\n";
-    Moose::out << target_cell_name << ".rotation = (0, 0, "
+    os_py << target_cell_name << " = openmc.Cell(fill=" << output_lattice_name << ")\n";
+    os_py << target_cell_name << ".rotation = (0, 0, "
                << std::get<0>(lattice_transforms[0].second) << ")\n";
-    Moose::out << target_univ_name << " = openmc.Universe(cells=[" << target_cell_name << "])\n";
+    os_py << target_univ_name << " = openmc.Universe(cells=[" << target_cell_name << "])\n";
   }
 }
 
 void
-CSGBase::defineOpenMCSurface(const std::string & surf_name, const bool is_outer_boundary) const
+CSGBase::defineOpenMCSurface(const std::string & surf_name, const bool is_outer_boundary, std::ofstream & os_py) const
 {
   // TODO account for surface transformations
   const auto & csg_surf = _surface_list.getSurface(surf_name);
   const auto & coeffs = csg_surf.getCoeffs();
   const auto & surf_type = csg_surf.getSurfaceType();
   // TODO make substr(8) for general
-  Moose::out << surf_name << " = openmc." << surf_type.substr(8) << "(";
+  os_py << surf_name << " = openmc." << surf_type.substr(8) << "(";
   for (auto it = coeffs.begin(); it != coeffs.end(); ++it)
   {
     if (it != coeffs.begin())
-      Moose::out << ", ";
-    Moose::out << it->first << "=" << it->second;
+      os_py << ", ";
+    os_py << it->first << "=" << it->second;
   }
   if (is_outer_boundary)
-    Moose::out << ", boundary_type='vacuum'";
-  Moose::out << ")\n";
+    os_py << ", boundary_type='vacuum'";
+  os_py << ")\n";
 }
 
 void

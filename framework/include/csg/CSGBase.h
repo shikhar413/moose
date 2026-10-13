@@ -972,10 +972,10 @@ private:
       std::set<std::string> & linked_surface_names,
       std::set<std::string> & linked_material_names) const;
 
-  void defineOpenMCCell(const std::string & surf_name) const;
-  void defineOpenMCUniverse(const std::string & univ_name) const;
-  void defineOpenMCLattice(const std::string & lattice_name) const;
-  void defineOpenMCSurface(const std::string & surf_name, const bool is_outer_boundary) const;
+  void defineOpenMCCell(const std::string & surf_name, std::ofstream & os_py) const;
+  void defineOpenMCUniverse(const std::string & univ_name, std::ofstream & os_py) const;
+  void defineOpenMCLattice(const std::string & lattice_name, std::ofstream & os_py) const;
+  void defineOpenMCSurface(const std::string & surf_name, const bool is_outer_boundary, std::ofstream & os_py) const;
   std::string toOpenMCRegion(const CSGRegion & region) const;
   void replaceAll(std::string & str, const std::string & from, const std::string & to) const;
   std::set<std::string> getOuterBoundarySurfs() const;
